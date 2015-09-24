@@ -1,84 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aWB-dZ-aMH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myspendingapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEI-c4-kyN">
-                                <rect key="frame" x="305" y="519" width="265" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcI-6I-KMc">
-                                <rect key="frame" x="30" y="519" width="265" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LcI-6I-KMc" secondAttribute="height" multiplier="12:2" id="5f5-Ff-Ahq"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5f5-Ff-Ahq"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="5f5-Ff-Ahq"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="aWB-dZ-aMH" kind="presentation" id="b6X-re-jjE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sEI-c4-kyN" firstAttribute="height" secondItem="LcI-6I-KMc" secondAttribute="height" id="6Ue-Ry-Fdt"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sEI-c4-kyN" secondAttribute="bottom" constant="51" id="6gS-zX-bhV"/>
-                            <constraint firstItem="sEI-c4-kyN" firstAttribute="width" secondItem="LcI-6I-KMc" secondAttribute="width" id="H5e-hd-GvO"/>
-                            <constraint firstItem="sEI-c4-kyN" firstAttribute="leading" secondItem="LcI-6I-KMc" secondAttribute="trailing" constant="10" id="NEv-50-Y0M"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LcI-6I-KMc" secondAttribute="bottom" constant="51" id="ShE-ij-Mv2"/>
-                            <constraint firstAttribute="trailing" secondItem="sEI-c4-kyN" secondAttribute="trailing" constant="30" id="Vep-NJ-xH6">
-                                <variation key="widthClass=regular" constant="80"/>
-                            </constraint>
-                            <constraint firstItem="LcI-6I-KMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="cck-2n-NRx">
-                                <variation key="widthClass=regular" constant="80"/>
-                            </constraint>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6Ue-Ry-Fdt"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=regular">
-                            <mask key="constraints">
-                                <include reference="6Ue-Ry-Fdt"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="138.75" y="387"/>
-        </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="aSq-oF-7kh">
             <objects>
-                <viewController id="aWB-dZ-aMH" sceneMemberID="viewController">
+                <viewController id="aWB-dZ-aMH" customClass="LoginViewController" customModule="myspendingapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DmH-g8-5io"/>
                         <viewControllerLayoutGuide type="bottom" id="bZh-D2-nmF"/>
@@ -87,59 +17,118 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P7H-xU-KVd">
-                                <rect key="frame" x="30" y="114" width="540" height="61"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <sections/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36T-VB-yxy">
-                                <rect key="frame" x="30" y="225" width="540" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36T-VB-yxy" customClass="MSAButton" customModule="myspendingapp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="374" width="560" height="56.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="INH-Xn-cmm"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZvJ-4l-Xqe"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZvJ-4l-Xqe"/>
+                                    </mask>
+                                </variation>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8T-4U-bAt">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="t5Z-mi-kcL">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Gyq-RN-Jw5">
-                                            <connections>
-                                                <segue destination="p3J-cE-BoU" kind="unwind" unwindAction="unwindForSegue:towardsViewController:" id="MiB-Iw-2G2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opv-Dg-SvT">
+                                <rect key="frame" x="20" y="100" width="560" height="244.5"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-22-k7m" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="56"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="26G-94-Umm"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcX-9P-jmQ" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="61" width="560" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="Juq-Cn-Gj7"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="12h-ex-zxp" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="122" width="560" height="56.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="IO4-W6-f1e"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zw3-nE-5E8" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="183" width="560" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zw3-nE-5E8" secondAttribute="height" multiplier="10:1" id="4Dt-YB-lxp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="OTt-TW-y3X"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Dk0-22-k7m" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="top" id="1wR-ot-p8x"/>
+                                    <constraint firstItem="12h-ex-zxp" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="3em-60-9hX"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="A6m-CO-Xcm"/>
+                                    <constraint firstItem="12h-ex-zxp" firstAttribute="top" secondItem="LcX-9P-jmQ" secondAttribute="bottom" constant="5" id="DZq-5B-Fh2"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="GUe-d9-uB4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="HRm-L8-OJM"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="leading" secondItem="Dk0-22-k7m" secondAttribute="leading" id="JNA-FO-wrj"/>
+                                    <constraint firstAttribute="bottom" secondItem="zw3-nE-5E8" secondAttribute="bottom" constant="5" id="KiN-xx-sKL"/>
+                                    <constraint firstItem="12h-ex-zxp" firstAttribute="width" secondItem="Dk0-22-k7m" secondAttribute="width" id="Toc-Z6-bVW"/>
+                                    <constraint firstItem="12h-ex-zxp" firstAttribute="leading" secondItem="Dk0-22-k7m" secondAttribute="leading" id="c9v-hu-Eac"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="dBy-fi-W2a"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="top" secondItem="12h-ex-zxp" secondAttribute="bottom" constant="5" id="kup-lN-wBB"/>
+                                    <constraint firstItem="12h-ex-zxp" firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="nM7-6z-nUh"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="width" secondItem="Dk0-22-k7m" secondAttribute="width" id="o3q-0w-itB"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="width" secondItem="Dk0-22-k7m" secondAttribute="width" id="oNp-nB-MYW"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="top" secondItem="Dk0-22-k7m" secondAttribute="bottom" constant="5" id="skz-v7-Be4"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="tcV-eo-HJX"/>
+                                    <constraint firstItem="Dk0-22-k7m" firstAttribute="leading" secondItem="Opv-Dg-SvT" secondAttribute="leading" id="vMZ-kc-75W"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="leading" secondItem="Dk0-22-k7m" secondAttribute="leading" id="zVx-aZ-poJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-Cg-nsd">
+                                <rect key="frame" x="534" y="441" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onChangeMode:" destination="aWB-dZ-aMH" eventType="touchUpInside" id="sQu-LO-FxF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O8T-4U-bAt" firstAttribute="centerX" secondItem="P7H-xU-KVd" secondAttribute="centerX" id="4yR-Nb-Lim"/>
-                            <constraint firstItem="O8T-4U-bAt" firstAttribute="top" secondItem="JIm-TC-ReA" secondAttribute="topMargin" constant="-4" id="D6b-vA-Nmv"/>
-                            <constraint firstItem="P7H-xU-KVd" firstAttribute="leading" secondItem="JIm-TC-ReA" secondAttribute="leading" constant="30" id="DNw-j9-ve5">
-                                <variation key="widthClass=regular" constant="50"/>
-                            </constraint>
-                            <constraint firstItem="bZh-D2-nmF" firstAttribute="top" secondItem="36T-VB-yxy" secondAttribute="bottom" constant="345" id="EvK-5T-ZXJ"/>
-                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="P7H-xU-KVd" secondAttribute="bottom" constant="50" id="GKq-Yg-RgT"/>
-                            <constraint firstAttribute="trailing" secondItem="P7H-xU-KVd" secondAttribute="trailing" constant="30" id="J8w-50-mRV">
-                                <variation key="widthClass=regular" constant="50"/>
-                            </constraint>
-                            <constraint firstItem="O8T-4U-bAt" firstAttribute="top" secondItem="DmH-g8-5io" secondAttribute="bottom" id="Yxr-aV-tQA"/>
-                            <constraint firstItem="O8T-4U-bAt" firstAttribute="leading" secondItem="JIm-TC-ReA" secondAttribute="leading" id="agA-Z7-pjH"/>
-                            <constraint firstItem="36T-VB-yxy" firstAttribute="width" secondItem="P7H-xU-KVd" secondAttribute="width" id="ojO-SA-vMz"/>
-                            <constraint firstItem="P7H-xU-KVd" firstAttribute="top" secondItem="O8T-4U-bAt" secondAttribute="bottom" constant="50" id="vah-F8-Bgh"/>
-                            <constraint firstItem="36T-VB-yxy" firstAttribute="centerX" secondItem="P7H-xU-KVd" secondAttribute="centerX" id="xYW-59-Jli"/>
+                            <constraint firstItem="XPu-Cg-nsd" firstAttribute="top" secondItem="36T-VB-yxy" secondAttribute="bottom" constant="10" id="9Xt-fI-6zF"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="trailing" secondItem="Opv-Dg-SvT" secondAttribute="trailing" id="DLu-mB-ufI"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="bottom" constant="30" id="NjF-ai-aYX"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="width" secondItem="Opv-Dg-SvT" secondAttribute="width" id="ROa-Ky-YN7"/>
+                            <constraint firstItem="Opv-Dg-SvT" firstAttribute="leading" secondItem="JIm-TC-ReA" secondAttribute="leading" constant="20" id="csI-SC-xvh"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="bottom" constant="30" id="h6a-qQ-xyh"/>
+                            <constraint firstItem="Opv-Dg-SvT" firstAttribute="top" secondItem="DmH-g8-5io" secondAttribute="bottom" constant="80" id="jda-X4-43q"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="leading" secondItem="Opv-Dg-SvT" secondAttribute="leading" id="lWK-Qa-rqg"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="height" secondItem="zw3-nE-5E8" secondAttribute="height" id="p69-BO-nk3"/>
+                            <constraint firstItem="XPu-Cg-nsd" firstAttribute="trailing" secondItem="36T-VB-yxy" secondAttribute="trailing" id="qXF-hi-bPa"/>
+                            <constraint firstAttribute="trailing" secondItem="Opv-Dg-SvT" secondAttribute="trailing" constant="20" id="rWs-gd-mVW"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="D6b-vA-Nmv"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="_changeModeBtn" destination="XPu-Cg-nsd" id="Wqo-QD-fkF"/>
+                        <outlet property="_emailTextField" destination="12h-ex-zxp" id="Iqc-FM-Iaw"/>
+                        <outlet property="_firstNameTextField" destination="Dk0-22-k7m" id="RgO-2l-Ecb"/>
+                        <outlet property="_lastNameTextField" destination="LcX-9P-jmQ" id="urK-FI-I6m"/>
+                        <outlet property="_passwordTextField" destination="zw3-nE-5E8" id="DDB-uO-Xdv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6H4-w6-ESk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="p3J-cE-BoU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="806" y="387"/>
         </scene>

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; settings = {ASSET_TAGS = (); }; };
+		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; settings = {ASSET_TAGS = (); }; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
-		FCE8DE2D1BABC6F7008A716B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* ViewController.swift */; };
+		FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */; };
 		FCE8DE301BABC6F7008A716B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE2E1BABC6F7008A716B /* Main.storyboard */; };
 		FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE311BABC6F7008A716B /* myspendingapp.xcdatamodeld */; };
 		FCE8DE351BABC6F7008A716B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE341BABC6F7008A716B /* Assets.xcassets */; };
@@ -35,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC49419B1BB3D17400C6349D /* MSATextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSATextField.swift; sourceTree = "<group>"; };
+		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FCE8DE271BABC6F7008A716B /* myspendingapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myspendingapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCE8DE2C1BABC6F7008A716B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FCE8DE2F1BABC6F7008A716B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCE8DE321BABC6F7008A716B /* myspendingapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myspendingapp.xcdatamodel; sourceTree = "<group>"; };
 		FCE8DE341BABC6F7008A716B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,12 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */,
-				FCE8DE2C1BABC6F7008A716B /* ViewController.swift */,
+				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
 				FCE8DE2E1BABC6F7008A716B /* Main.storyboard */,
 				FCE8DE341BABC6F7008A716B /* Assets.xcassets */,
 				FCE8DE361BABC6F7008A716B /* LaunchScreen.storyboard */,
 				FCE8DE391BABC6F7008A716B /* Info.plist */,
 				FCE8DE311BABC6F7008A716B /* myspendingapp.xcdatamodeld */,
+				FC49419B1BB3D17400C6349D /* MSATextField.swift */,
+				FC49419D1BB3D6A400C6349D /* MSAButton.swift */,
 			);
 			path = myspendingapp;
 			sourceTree = "<group>";
@@ -258,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE8DE2D1BABC6F7008A716B /* ViewController.swift in Sources */,
+				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
+				FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */,
 				FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */,
+				FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +495,7 @@
 				FCE8DE541BABC6F7008A716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FCE8DE551BABC6F7008A716B /* Build configuration list for PBXNativeTarget "myspendingappTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +504,7 @@
 				FCE8DE571BABC6F7008A716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FCE8DE581BABC6F7008A716B /* Build configuration list for PBXNativeTarget "myspendingappUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +513,7 @@
 				FCE8DE5A1BABC6F7008A716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
