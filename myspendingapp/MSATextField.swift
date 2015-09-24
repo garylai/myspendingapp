@@ -12,17 +12,18 @@ class MSATextField: UITextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
+        self.borderStyle = .None;
         self.layer.borderColor = UIColor.lightGrayColor().CGColor;
         self.layer.borderWidth = 1;
         self.layer.cornerRadius = 5.0;
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 10);
+        return CGRectInset(bounds, 10, 0);
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 10);
+        return CGRectInset(bounds, 10, 0);
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aWB-dZ-aMH">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36T-VB-yxy" customClass="MSAButton" customModule="myspendingapp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="374" width="560" height="56.5"/>
+                                <rect key="frame" x="20" y="270" width="560" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ZvJ-4l-Xqe"/>
                                 </constraints>
@@ -30,63 +31,83 @@
                                         <exclude reference="ZvJ-4l-Xqe"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onDone" destination="aWB-dZ-aMH" eventType="touchUpInside" id="x5q-9S-K8y"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opv-Dg-SvT">
-                                <rect key="frame" x="20" y="100" width="560" height="244.5"/>
+                                <rect key="frame" x="20" y="100" width="560" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-22-k7m" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="56"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="26G-94-Umm"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcX-9P-jmQ" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="61" width="560" height="56"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcX-9P-jmQ" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="560" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="X1g-0N-Xmv"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <outlet property="delegate" destination="aWB-dZ-aMH" id="Juq-Cn-Gj7"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="12h-ex-zxp" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="122" width="560" height="56.5"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="12h-ex-zxp" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="560" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <outlet property="delegate" destination="aWB-dZ-aMH" id="IO4-W6-f1e"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zw3-nE-5E8" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="183" width="560" height="56"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zw3-nE-5E8" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="85" width="560" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="zw3-nE-5E8" secondAttribute="height" multiplier="10:1" id="4Dt-YB-lxp"/>
+                                            <constraint firstAttribute="width" secondItem="zw3-nE-5E8" secondAttribute="height" multiplier="8:1" id="4Dt-YB-lxp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <outlet property="delegate" destination="aWB-dZ-aMH" id="OTt-TW-y3X"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-22-k7m" customClass="MSATextField" customModule="myspendingapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="0.0"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="aWB-dZ-aMH" id="26G-94-Umm"/>
                                         </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Dk0-22-k7m" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="top" id="1wR-ot-p8x"/>
-                                    <constraint firstItem="12h-ex-zxp" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="3em-60-9hX"/>
+                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="height" secondItem="12h-ex-zxp" secondAttribute="height" id="9oy-vN-YBv"/>
                                     <constraint firstItem="LcX-9P-jmQ" firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="A6m-CO-Xcm"/>
                                     <constraint firstItem="12h-ex-zxp" firstAttribute="top" secondItem="LcX-9P-jmQ" secondAttribute="bottom" constant="5" id="DZq-5B-Fh2"/>
-                                    <constraint firstItem="zw3-nE-5E8" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="GUe-d9-uB4"/>
+                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="Dgb-wh-YAu"/>
                                     <constraint firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="HRm-L8-OJM"/>
                                     <constraint firstItem="zw3-nE-5E8" firstAttribute="leading" secondItem="Dk0-22-k7m" secondAttribute="leading" id="JNA-FO-wrj"/>
                                     <constraint firstAttribute="bottom" secondItem="zw3-nE-5E8" secondAttribute="bottom" constant="5" id="KiN-xx-sKL"/>
                                     <constraint firstItem="12h-ex-zxp" firstAttribute="width" secondItem="Dk0-22-k7m" secondAttribute="width" id="Toc-Z6-bVW"/>
                                     <constraint firstItem="12h-ex-zxp" firstAttribute="leading" secondItem="Dk0-22-k7m" secondAttribute="leading" id="c9v-hu-Eac"/>
-                                    <constraint firstItem="LcX-9P-jmQ" firstAttribute="height" secondItem="Dk0-22-k7m" secondAttribute="height" id="dBy-fi-W2a"/>
                                     <constraint firstItem="zw3-nE-5E8" firstAttribute="top" secondItem="12h-ex-zxp" secondAttribute="bottom" constant="5" id="kup-lN-wBB"/>
                                     <constraint firstItem="12h-ex-zxp" firstAttribute="trailing" secondItem="Dk0-22-k7m" secondAttribute="trailing" id="nM7-6z-nUh"/>
                                     <constraint firstItem="LcX-9P-jmQ" firstAttribute="width" secondItem="Dk0-22-k7m" secondAttribute="width" id="o3q-0w-itB"/>
@@ -98,8 +119,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-Cg-nsd">
-                                <rect key="frame" x="534" y="441" width="46" height="30"/>
+                                <rect key="frame" x="534" y="342" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                </variation>
                                 <connections>
                                     <action selector="onChangeMode:" destination="aWB-dZ-aMH" eventType="touchUpInside" id="sQu-LO-FxF"/>
                                 </connections>
@@ -107,12 +131,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XPu-Cg-nsd" firstAttribute="top" secondItem="36T-VB-yxy" secondAttribute="bottom" constant="10" id="9Xt-fI-6zF"/>
+                            <constraint firstItem="XPu-Cg-nsd" firstAttribute="top" secondItem="36T-VB-yxy" secondAttribute="bottom" constant="2" id="9Xt-fI-6zF"/>
                             <constraint firstItem="36T-VB-yxy" firstAttribute="trailing" secondItem="Opv-Dg-SvT" secondAttribute="trailing" id="DLu-mB-ufI"/>
-                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="bottom" constant="30" id="NjF-ai-aYX"/>
                             <constraint firstItem="36T-VB-yxy" firstAttribute="width" secondItem="Opv-Dg-SvT" secondAttribute="width" id="ROa-Ky-YN7"/>
                             <constraint firstItem="Opv-Dg-SvT" firstAttribute="leading" secondItem="JIm-TC-ReA" secondAttribute="leading" constant="20" id="csI-SC-xvh"/>
-                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="bottom" constant="30" id="h6a-qQ-xyh"/>
+                            <constraint firstItem="36T-VB-yxy" firstAttribute="top" secondItem="Opv-Dg-SvT" secondAttribute="bottom" constant="10" id="h6a-qQ-xyh"/>
                             <constraint firstItem="Opv-Dg-SvT" firstAttribute="top" secondItem="DmH-g8-5io" secondAttribute="bottom" constant="80" id="jda-X4-43q"/>
                             <constraint firstItem="36T-VB-yxy" firstAttribute="leading" secondItem="Opv-Dg-SvT" secondAttribute="leading" id="lWK-Qa-rqg"/>
                             <constraint firstItem="36T-VB-yxy" firstAttribute="height" secondItem="zw3-nE-5E8" secondAttribute="height" id="p69-BO-nk3"/>
@@ -124,13 +147,14 @@
                         <outlet property="_changeModeBtn" destination="XPu-Cg-nsd" id="Wqo-QD-fkF"/>
                         <outlet property="_emailTextField" destination="12h-ex-zxp" id="Iqc-FM-Iaw"/>
                         <outlet property="_firstNameTextField" destination="Dk0-22-k7m" id="RgO-2l-Ecb"/>
+                        <outlet property="_lastNameContraint" destination="X1g-0N-Xmv" id="hsn-Xu-t5r"/>
                         <outlet property="_lastNameTextField" destination="LcX-9P-jmQ" id="urK-FI-I6m"/>
                         <outlet property="_passwordTextField" destination="zw3-nE-5E8" id="DDB-uO-Xdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6H4-w6-ESk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="387"/>
+            <point key="canvasLocation" x="532" y="397"/>
         </scene>
     </scenes>
 </document>

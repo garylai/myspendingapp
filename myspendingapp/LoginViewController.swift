@@ -23,15 +23,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     private var _logInTextFields : [MSATextField];
     private var _registerTextFields : [MSATextField];
     
+    private var _fieldOriginalHeight : CGFloat;
+    
+    @IBOutlet weak var _lastNameContraint: NSLayoutConstraint!;
+    
     required init?(coder aDecoder: NSCoder) {
-        _mode = .Register;
+        _mode = .Login;
         _logInTextFields = [];
         _registerTextFields = [];
+        _fieldOriginalHeight = 0;
         super.init(coder: aDecoder);
     }
     
     @IBAction func onChangeMode(sender: AnyObject) {
         _mode = (_mode == .Login ? .Register : .Login);
+        setFieldsWithAnimation(true);
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -49,8 +55,53 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         return false;
     }
     
-    func onDone() {
+    @IBAction func onDone() {
         print("done!");
+    }
+    
+    private func setFieldsWithAnimation(animated : Bool = false){
+        var targetTF : MSATextField!;
+        var targetAlpha : CGFloat!;
+        var targetHeight : CGFloat!;
+        
+        self.view.layoutIfNeeded();
+        if(_mode == .Login) {
+            targetHeight = 0;
+            targetAlpha = 0;
+            targetTF = _emailTextField;
+        } else if(_mode == .Register){
+            targetHeight = _fieldOriginalHeight;
+            targetAlpha = 1;
+            targetTF = _firstNameTextField;
+        }
+        
+        assert(targetTF != nil)
+        assert(targetAlpha != nil)
+        assert(targetHeight != nil)
+        
+        if(animated){
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self._lastNameContraint.constant = targetHeight;
+                self._firstNameTextField.alpha = targetAlpha;
+                self._lastNameTextField.alpha = targetAlpha;
+                self.view .layoutIfNeeded();
+                }, completion: { (completed) -> Void in
+                    targetTF.becomeFirstResponder();
+            });
+        } else {
+            self._lastNameContraint.constant = targetHeight;
+            self._firstNameTextField.alpha = targetAlpha;
+            self._lastNameTextField.alpha = targetAlpha;
+            
+            self.view .layoutIfNeeded();
+            targetTF.becomeFirstResponder();
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        _fieldOriginalHeight = _emailTextField.frame.height;
+        _lastNameContraint.constant = _fieldOriginalHeight;
+        setFieldsWithAnimation();
     }
     
     override func viewDidLoad() {
