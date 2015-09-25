@@ -9,11 +9,20 @@
 import UIKit
 
 class MSATextField: UITextField {
+    private var _boarderColor : UIColor?
+    @IBInspectable var borderColor : UIColor? {
+        set (newValue) {
+            _boarderColor = newValue;
+            self.layer.borderColor = (newValue ?? UIColor.clearColor()).CGColor;
+        }
+        get {
+            return _boarderColor;
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.borderStyle = .None;
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor;
         self.layer.borderWidth = 1;
         self.layer.cornerRadius = 5.0;
     }

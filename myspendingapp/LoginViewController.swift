@@ -8,11 +8,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate{
+class LoginViewController: UIViewController, UITextFieldDelegate {
     private enum Mode : Int{
         case Login = 1
         case Register
     }
+    
+    private let LOGIN_TEXT : String = "Log In";
+    private let REGISTER_TEXT : String = "Join";
+    
     private var _mode : Mode;
     @IBOutlet weak var _firstNameTextField: MSATextField!;
     @IBOutlet weak var _lastNameTextField: MSATextField!;
@@ -24,8 +28,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     private var _registerTextFields : [MSATextField];
     
     private var _fieldOriginalHeight : CGFloat;
+    private let _fieldsMargin : CGFloat = 5;
     
     @IBOutlet weak var _lastNameContraint: NSLayoutConstraint!;
+    
+    @IBOutlet weak var _lastNameEmailContraint: NSLayoutConstraint!;
+    @IBOutlet weak var _firstNameLastNameContraint: NSLayoutConstraint!;
     
     required init?(coder aDecoder: NSCoder) {
         _mode = .Login;
@@ -63,38 +71,51 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         var targetTF : MSATextField!;
         var targetAlpha : CGFloat!;
         var targetHeight : CGFloat!;
+        var targetText : String!;
+        var margin: CGFloat!;
         
-        self.view.layoutIfNeeded();
-        if(_mode == .Login) {
+        switch(_mode) {
+        case .Login:
             targetHeight = 0;
             targetAlpha = 0;
             targetTF = _emailTextField;
-        } else if(_mode == .Register){
+            targetText = LOGIN_TEXT;
+            margin = 0;
+        case .Register:
             targetHeight = _fieldOriginalHeight;
             targetAlpha = 1;
             targetTF = _firstNameTextField;
+            targetText = REGISTER_TEXT;
+            margin = _fieldsMargin;
         }
         
-        assert(targetTF != nil)
-        assert(targetAlpha != nil)
-        assert(targetHeight != nil)
-        
-        if(animated){
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self._lastNameContraint.constant = targetHeight;
-                self._firstNameTextField.alpha = targetAlpha;
-                self._lastNameTextField.alpha = targetAlpha;
-                self.view .layoutIfNeeded();
-                }, completion: { (completed) -> Void in
-                    targetTF.becomeFirstResponder();
-            });
-        } else {
+        func valuesSetup() {
             self._lastNameContraint.constant = targetHeight;
             self._firstNameTextField.alpha = targetAlpha;
             self._lastNameTextField.alpha = targetAlpha;
-            
-            self.view .layoutIfNeeded();
+            self._firstNameLastNameContraint.constant = margin;
+            self._lastNameEmailContraint.constant = margin;
+        }
+        
+        func completion() {
             targetTF.becomeFirstResponder();
+            self.title = targetText;
+            self._changeModeBtn.setTitle(targetText, forState: UIControlState.Normal);
+            self._changeModeBtn.setTitle(targetText, forState: UIControlState.Highlighted);
+        }
+        
+        if(animated){
+            self.view.layoutIfNeeded();
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                valuesSetup();
+                self.view.layoutIfNeeded();
+                }, completion: { (completed) -> Void in
+                    completion();
+            });
+        } else {
+            valuesSetup();
+            completion();
+            self.view.layoutIfNeeded();
         }
     }
     
