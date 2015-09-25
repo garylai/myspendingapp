@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; settings = {ASSET_TAGS = (); }; };
-		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; settings = {ASSET_TAGS = (); }; };
+		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; };
+		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
 		FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */; };
 		FCE8DE301BABC6F7008A716B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE2E1BABC6F7008A716B /* Main.storyboard */; };
@@ -37,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.debug.xcconfig"; sourceTree = "<group>"; };
+		3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myspendingapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.release.xcconfig"; sourceTree = "<group>"; };
 		FC49419B1BB3D17400C6349D /* MSATextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSATextField.swift; sourceTree = "<group>"; };
 		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FCE8DE271BABC6F7008A716B /* myspendingapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myspendingapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D00E89C78547E8BBE4848D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70056053372CC02FAB06434B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */,
+				CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FCE8DE1E1BABC6F6008A716B = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +109,8 @@
 				FCE8DE411BABC6F7008A716B /* myspendingappTests */,
 				FCE8DE4C1BABC6F7008A716B /* myspendingappUITests */,
 				FCE8DE281BABC6F7008A716B /* Products */,
+				70056053372CC02FAB06434B /* Pods */,
+				0D00E89C78547E8BBE4848D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCE8DE521BABC6F7008A716B /* Build configuration list for PBXNativeTarget "myspendingapp" */;
 			buildPhases = (
+				52ABC4C0D86EE34F98E4EEF0 /* Check Pods Manifest.lock */,
 				FCE8DE231BABC6F6008A716B /* Sources */,
 				FCE8DE241BABC6F6008A716B /* Frameworks */,
 				FCE8DE251BABC6F6008A716B /* Resources */,
+				7E5FA6BACE7041261DD997AE /* Embed Pods Frameworks */,
+				1282CD64E4D82D3AD1E1C16C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1282CD64E4D82D3AD1E1C16C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52ABC4C0D86EE34F98E4EEF0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E5FA6BACE7041261DD997AE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FCE8DE231BABC6F6008A716B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -340,6 +415,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -385,6 +461,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -408,6 +485,7 @@
 		};
 		FCE8DE531BABC6F7008A716B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = myspendingapp/Info.plist;
@@ -419,6 +497,7 @@
 		};
 		FCE8DE541BABC6F7008A716B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = myspendingapp/Info.plist;
