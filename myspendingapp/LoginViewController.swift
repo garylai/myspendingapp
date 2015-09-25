@@ -71,7 +71,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var targetTF : MSATextField!;
         var targetAlpha : CGFloat!;
         var targetHeight : CGFloat!;
-        var targetText : String!;
+        var titleText : String!;
+        var btnText : String!;
         var margin: CGFloat!;
         
         switch(_mode) {
@@ -79,13 +80,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             targetHeight = 0;
             targetAlpha = 0;
             targetTF = _emailTextField;
-            targetText = LOGIN_TEXT;
+            titleText = LOGIN_TEXT;
+            btnText = REGISTER_TEXT;
             margin = 0;
         case .Register:
             targetHeight = _fieldOriginalHeight;
             targetAlpha = 1;
             targetTF = _firstNameTextField;
-            targetText = REGISTER_TEXT;
+            titleText = REGISTER_TEXT;
+            btnText = LOGIN_TEXT;
             margin = _fieldsMargin;
         }
         
@@ -99,9 +102,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         func completion() {
             targetTF.becomeFirstResponder();
-            self.title = targetText;
-            self._changeModeBtn.setTitle(targetText, forState: UIControlState.Normal);
-            self._changeModeBtn.setTitle(targetText, forState: UIControlState.Highlighted);
+            self.title = titleText;
+            self._changeModeBtn.setTitle(btnText, forState: UIControlState.Normal);
+            self._changeModeBtn.setTitle(btnText, forState: UIControlState.Highlighted);
         }
         
         if(animated){
