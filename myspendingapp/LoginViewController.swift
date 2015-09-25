@@ -68,43 +68,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setFieldsWithAnimation(animated : Bool = false){
-        var targetTF : MSATextField!;
-        var targetAlpha : CGFloat!;
-        var targetHeight : CGFloat!;
-        var titleText : String!;
-        var btnText : String!;
-        var margin: CGFloat!;
-        
-        switch(_mode) {
-        case .Login:
-            targetHeight = 0;
-            targetAlpha = 0;
-            targetTF = _emailTextField;
-            titleText = LOGIN_TEXT;
-            btnText = REGISTER_TEXT;
-            margin = 0;
-        case .Register:
-            targetHeight = _fieldOriginalHeight;
-            targetAlpha = 1;
-            targetTF = _firstNameTextField;
-            titleText = REGISTER_TEXT;
-            btnText = LOGIN_TEXT;
-            margin = _fieldsMargin;
-        }
         
         func valuesSetup() {
-            self._lastNameContraint.constant = targetHeight;
-            self._firstNameTextField.alpha = targetAlpha;
-            self._lastNameTextField.alpha = targetAlpha;
-            self._firstNameLastNameContraint.constant = margin;
-            self._lastNameEmailContraint.constant = margin;
+            self._lastNameContraint.constant = (_mode == .Login ? 0 : _fieldOriginalHeight);
+            self._firstNameTextField.alpha = (_mode == .Login ? 0 : 1);
+            self._lastNameTextField.alpha = (_mode == .Login ? 0 : 1);
+            self._firstNameLastNameContraint.constant = (_mode == .Login ? 0 : _fieldsMargin);
+            self._lastNameEmailContraint.constant = (_mode == .Login ? 0 : _fieldsMargin);
         }
         
         func completion() {
+            let targetTF : MSATextField = (_mode == .Login ? _emailTextField : _firstNameTextField);
             targetTF.becomeFirstResponder();
-            self.title = titleText;
-            self._changeModeBtn.setTitle(btnText, forState: UIControlState.Normal);
-            self._changeModeBtn.setTitle(btnText, forState: UIControlState.Highlighted);
+            
+            self.title = (_mode == .Login ? LOGIN_TEXT : REGISTER_TEXT);
+            self._changeModeBtn.setTitle((_mode == .Login ? REGISTER_TEXT : LOGIN_TEXT),
+                                            forState: UIControlState.Normal);
+            self._changeModeBtn.setTitle((_mode == .Login ? REGISTER_TEXT : LOGIN_TEXT),
+                                            forState: UIControlState.Highlighted);
         }
         
         if(animated){
