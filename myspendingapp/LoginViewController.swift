@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private let LOGIN_TEXT : String = "Log In";
-    private let REGISTER_TEXT : String = "Join";
+    private let REGISTER_TEXT : String = "Register";
     
     private var _mode : Mode;
     @IBOutlet weak var _firstNameTextField: MSATextField!;
