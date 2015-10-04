@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     private enum Mode : Int{
@@ -65,6 +66,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onDone() {
         print("done!");
+        
+        if let email = _emailTextField.text, let password = _passwordTextField.text {
+            let parameters = ["email": email, "password": password];
+            let url = "\(ENV.APIURLPrefix)/user/token";
+            
+            Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+                .responseJSON { _, response, result in
+                    if let statusCode = response?.statusCode {
+                        if (200..<300).contains(statusCode) {
+                            print("succeed with : \(result.value)");
+                        } else {
+                            // pop message
+                            print("failed with : \(result.value)");
+                        }
+                    } else {
+                        // pop message
+                        print("failed with: \(result.error)");
+                    }
+                    print("completed");
+            }
+        }
     }
     
     private func setFieldsWithAnimation(animated : Bool = false){
