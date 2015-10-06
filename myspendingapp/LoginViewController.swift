@@ -67,9 +67,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onDone() {
         print("done!");
         
-        if let email = _emailTextField.text, let password = _passwordTextField.text {
-            let parameters = ["email": email, "password": password];
-            let url = "\(ENV.APIURLPrefix)/user/token";
+        switch _mode {
+        case .Login:
+            if let email = _emailTextField.text, let password = _passwordTextField.text {
+                let parameters = ["email": email, "password": password];
+                let url = "\(ENV.APIURLPrefix)/user/token";
+                
+                Util.mainController.showActivityIndicator = true;
+                
+                Util.alamofireManager.requestWithCallbacks(.POST, url,
+                    parameters: parameters,
+                    encoding: .JSON,
+                    successCallback: { (json) -> Void in
+                        print(json);
+                    },
+                    completedCallback: { () -> Void in
+                        Util.mainController.showActivityIndicator = false;
+                })
+            };
+        case .Register:
+            
         }
     }
     
