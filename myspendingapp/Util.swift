@@ -62,7 +62,7 @@ extension Manager {
     }
 }
 class Util {
-    static let alamofireManager : Manager = {
+    static let alamofireManager : Manager = { 
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 20 // seconds
         configuration.timeoutIntervalForResource = 20

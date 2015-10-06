@@ -65,29 +65,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onDone() {
-        print("done!");
-        
-        switch _mode {
-        case .Login:
-            if let email = _emailTextField.text, let password = _passwordTextField.text {
-                let parameters = ["email": email, "password": password];
-                let url = "\(ENV.APIURLPrefix)/user/token";
-                
-                Util.mainController.showActivityIndicator = true;
-                
-                Util.alamofireManager.requestWithCallbacks(.POST, url,
-                    parameters: parameters,
-                    encoding: .JSON,
-                    successCallback: { (json) -> Void in
-                        print(json);
-                    },
-                    completedCallback: { () -> Void in
-                        Util.mainController.showActivityIndicator = false;
-                })
-            };
-        case .Register:
+        let (url, parameters) : (String, [String : String]) = {
+                var url : String!;
+                var parameters: [String : String]!;
             
-        }
+                switch _mode {
+                case .Login:
+                    if let email = _emailTextField.text where !email.isEmpty,
+                        let password = _passwordTextField.text where !password.isEmpty
+                    {
+                        parameters = ["email": email, "password": password];
+                        url = "\(ENV.APIURLPrefix)/user/token";
+                    };
+                case .Register:
+                    if let email = _emailTextField.text where !email.isEmpty,
+                        let password = _passwordTextField.text where !password.isEmpty,
+                        let firstName = _firstNameTextField.text where !firstName.isEmpty,
+                        let lastName = _lastNameTextField.text where !lastName.isEmpty
+                    {
+                        parameters = ["email": email, "password": password, "first_name": firstName, "last_name": lastName];
+                        url = "\(ENV.APIURLPrefix)/user";
+                    };
+            }
+            return (url, parameters);
+            }();
+        
+        Util.mainController.showActivityIndicator = true;
+        
+        Util.alamofireManager.requestWithCallbacks(.POST, url,
+            parameters: parameters,
+            encoding: .JSON,
+            successCallback: { (json) -> Void in
+                print(json);
+            },
+            completedCallback: { () -> Void in
+                Util.mainController.showActivityIndicator = false;
+        })
     }
     
     private func setFieldsWithAnimation(animated : Bool = false){
@@ -130,6 +143,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         _fieldOriginalHeight = _emailTextField.frame.height;
         _lastNameContraint.constant = _fieldOriginalHeight;
         setFieldsWithAnimation();
+        Util.mainController.showActivityIndicator = true;
     }
     
     override func viewDidLoad() {
