@@ -14,6 +14,10 @@
 		FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC78EB8B1BC0C19F005E39FC /* Environment.swift */; settings = {ASSET_TAGS = (); }; };
 		FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9D5CBB1BC37898004BEE27 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		FC9D5CC11BC4E9EE004BEE27 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC01BC4E9EE004BEE27 /* Rule.swift */; settings = {ASSET_TAGS = (); }; };
+		FC9D5CC31BC4EB57004BEE27 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC21BC4EB57004BEE27 /* RequiredRule.swift */; settings = {ASSET_TAGS = (); }; };
+		FC9D5CC51BC4EBEA004BEE27 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */; settings = {ASSET_TAGS = (); }; };
+		FC9D5CC71BC4F351004BEE27 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC61BC4F351004BEE27 /* Validator.swift */; settings = {ASSET_TAGS = (); }; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
 		FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */; };
 		FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE2E1BABC6F7008A716B /* Login.storyboard */; };
@@ -51,6 +55,10 @@
 		FC78EB8B1BC0C19F005E39FC /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		FC9D5CBB1BC37898004BEE27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FC9D5CC01BC4E9EE004BEE27 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		FC9D5CC21BC4EB57004BEE27 /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
+		FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRule.swift; sourceTree = "<group>"; };
+		FC9D5CC61BC4F351004BEE27 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FCE8DE271BABC6F7008A716B /* myspendingapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myspendingapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +118,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC9D5CBF1BC4E849004BEE27 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				FC9D5CC01BC4E9EE004BEE27 /* Rule.swift */,
+				FC9D5CC21BC4EB57004BEE27 /* RequiredRule.swift */,
+				FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */,
+				FC9D5CC61BC4F351004BEE27 /* Validator.swift */,
+			);
+			name = Validators;
+			sourceTree = "<group>";
+		};
 		FCE8DE1E1BABC6F6008A716B = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +154,7 @@
 		FCE8DE291BABC6F7008A716B /* myspendingapp */ = {
 			isa = PBXGroup;
 			children = (
+				FC9D5CBF1BC4E849004BEE27 /* Validators */,
 				FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */,
 				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
 				FCE8DE2E1BABC6F7008A716B /* Login.storyboard */,
@@ -240,6 +260,7 @@
 				TargetAttributes = {
 					FCE8DE261BABC6F6008A716B = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = CX57886757;
 					};
 					FCE8DE3D1BABC6F7008A716B = {
 						CreatedOnToolsVersion = 7.0;
@@ -353,10 +374,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
+				FC9D5CC11BC4E9EE004BEE27 /* Rule.swift in Sources */,
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
+				FC9D5CC71BC4F351004BEE27 /* Validator.swift in Sources */,
 				FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */,
+				FC9D5CC51BC4EBEA004BEE27 /* EmailRule.swift in Sources */,
 				FC743E311BC166AE008BF21F /* Util.swift in Sources */,
+				FC9D5CC31BC4EB57004BEE27 /* RequiredRule.swift in Sources */,
 				FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */,
 				FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */,
 				FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */,
@@ -451,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -491,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -504,10 +529,13 @@
 			baseConfigurationReference = 04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = myspendingapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myspendingapp.myspendingapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -516,10 +544,13 @@
 			baseConfigurationReference = CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = myspendingapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myspendingapp.myspendingapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

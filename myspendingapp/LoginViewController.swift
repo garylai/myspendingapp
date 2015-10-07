@@ -31,6 +31,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private var _fieldOriginalHeight : CGFloat;
     private let _fieldsMargin : CGFloat = 5;
     
+    private var _loginValidator : Validator;
+    private var _registerValidator : Validator;
+    
     @IBOutlet weak var _lastNameContraint: NSLayoutConstraint!;
     
     @IBOutlet weak var _lastNameEmailContraint: NSLayoutConstraint!;
@@ -41,6 +44,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         _logInTextFields = [];
         _registerTextFields = [];
         _fieldOriginalHeight = 0;
+        
+        _loginValidator = Validator();
+        _registerValidator = Validator();
+        
         super.init(coder: aDecoder);
     }
     
@@ -65,45 +72,59 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onDone() {
-        let (url, parameters) : (String, [String : String]) = {
-                var url : String!;
-                var parameters: [String : String]!;
+        let (isValid, url, parameters) : (Bool, String, [String : String]) = {
+            var url : String!;
             
-                switch _mode {
-                case .Login:
-                    if let email = _emailTextField.text where !email.isEmpty,
-                        let password = _passwordTextField.text where !password.isEmpty
-                    {
-                        parameters = ["email": email, "password": password];
-                        url = "\(ENV.APIURLPrefix)/user/token";
-                    };
-                case .Register:
-                    if let email = _emailTextField.text where !email.isEmpty,
-                        let password = _passwordTextField.text where !password.isEmpty,
-                        let firstName = _firstNameTextField.text where !firstName.isEmpty,
-                        let lastName = _lastNameTextField.text where !lastName.isEmpty
-                    {
-                        parameters = ["email": email, "password": password, "first_name": firstName, "last_name": lastName];
-                        url = "\(ENV.APIURLPrefix)/user";
-                    };
+            var (validFields, invalidFields, params) = _loginValidator.validate();
+            
+            switch _mode {
+            case .Register:
+                url = "\(ENV.APIURLPrefix)/user";
+                let registerValidationResult = _registerValidator.validate();
+                validFields.appendContentsOf(registerValidationResult.valid);
+                invalidFields.merge(registerValidationResult.invalid);
+                params.merge(registerValidationResult.params);
+            case .Login:
+                url = "\(ENV.APIURLPrefix)/user/token";
             }
-            return (url, parameters);
-            }();
+            
+            for tf in validFields {
+                (tf as! MSATextField).isIncorrect = false;
+            }
+            
+            for tf in invalidFields.keys {
+                (tf as! MSATextField).isIncorrect = true;
+            }
+            
+            return (invalidFields.count == 0, url, params);
+        }();
         
-        Util.mainController.showActivityIndicator = true;
-        
-        Util.alamofireManager.requestWithCallbacks(.POST, url,
-            parameters: parameters,
-            encoding: .JSON,
-            successCallback: { (json) -> Void in
-                print(json);
-            },
-            completedCallback: { () -> Void in
-                Util.mainController.showActivityIndicator = false;
-        })
+        if isValid {
+            Util.mainController.showActivityIndicator = true;
+            
+            print(url);
+            Util.alamofireManager.requestWithCallbacks(.POST, url,
+                parameters: parameters,
+                encoding: .JSON,
+                successCallback: { (json) -> Void in
+                    print(json);
+                },
+                completedCallback: { () -> Void in
+                    Util.mainController.showActivityIndicator = false;
+            })
+        }
     }
     
     private func setFieldsWithAnimation(animated : Bool = false){
+        _firstNameTextField.isIncorrect = false;
+        _lastNameTextField.isIncorrect = false;
+        _emailTextField.isIncorrect = false;
+        _passwordTextField.isIncorrect = false;
+        
+        _firstNameTextField.text = "";
+        _lastNameTextField.text = "";
+        _emailTextField.text = "";
+        _passwordTextField.text = "";
         
         func valuesSetup() {
             self._lastNameContraint.constant = (_mode == .Login ? 0 : _fieldOriginalHeight);
@@ -143,12 +164,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         _fieldOriginalHeight = _emailTextField.frame.height;
         _lastNameContraint.constant = _fieldOriginalHeight;
         setFieldsWithAnimation();
-        Util.mainController.showActivityIndicator = true;
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        _loginValidator.register(_emailTextField, withName: "email", forRules: RequiredRule(), EmailRule());
+        _loginValidator.register(_passwordTextField, withName: "password", forRules: RequiredRule());
+        
+        _registerValidator.register(_firstNameTextField, withName: "first_name", forRules: RequiredRule());
+        _registerValidator.register(_lastNameTextField, withName: "last_name", forRules: RequiredRule());
+        
         _logInTextFields.appendContentsOf([_emailTextField, _passwordTextField]);
         _registerTextFields.appendContentsOf([_firstNameTextField, _lastNameTextField, _emailTextField, _passwordTextField]);
         _firstNameTextField!.becomeFirstResponder();

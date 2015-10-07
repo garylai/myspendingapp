@@ -38,6 +38,7 @@ extension Manager {
                         print("succeed with : \(result.value)");
                         successCallback?(result.value);
                 } else if let _ = response?.statusCode {
+                        print(response?.statusCode);
                         print("failed with : \(result.value)");
                         message = (result.value as? [String: [String]])?["errors"]?[0];
                         error = kAPIError.ServerReturned(result.value);
@@ -64,8 +65,8 @@ extension Manager {
 class Util {
     static let alamofireManager : Manager = { 
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForRequest = 20 // seconds
-        configuration.timeoutIntervalForResource = 20
+//        configuration.timeoutIntervalForRequest = 20 // seconds
+//        configuration.timeoutIntervalForResource = 20
         return Alamofire.Manager(configuration: configuration)}();
     
     static var mainController: MainViewController {
@@ -74,26 +75,15 @@ class Util {
             return appDelegate.window!.rootViewController as! MainViewController;
         }
     }
-//    
-//    static func request(
-//        method: Alamofire.Method,
-//        _ URLString: Alamofire.URLStringConvertible,
-//        parameters: [String: AnyObject]? = nil,
-//        encoding: Alamofire.ParameterEncoding = .URL,
-//        headers: [String: String]? = nil,
-//        successCallback: ((AnyObject?) -> Void)? = nil,
-//        failedCallback: ((kAPIError) -> Void)? = nil,
-//        completedCallback: (() -> Void)? = nil)
-//        -> Alamofire.Request
-//     {
-//        return _manager.requestWithCallbacks(method, URLString,
-//                                            parameters: parameters,
-//                                            encoding: encoding,
-//                                            headers: headers,
-//                                            successCallback: successCallback,
-//                                            failedCallback: failedCallback,
-//                                            completedCallback: completedCallback);
-//    }
+}
+
+
+extension Dictionary {
+    mutating func merge(dict: [Key: Value]){
+        for (k, v) in dict {
+            self.updateValue(v, forKey: k);
+        }
+    }
 }
 
 

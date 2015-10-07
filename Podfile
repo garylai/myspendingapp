@@ -6,7 +6,7 @@ target 'myspendingapp' do
 	platform :ios, '8.0'
 	use_frameworks!
 
-	pod 'Alamofire', '~> 2.0'	
+    pod 'Alamofire', '~> 2.0'
 end
 
 target 'myspendingappTests' do

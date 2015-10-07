@@ -20,7 +20,23 @@ class MSATextField: UITextField {
         }
     }
     
+    private var _isIncorrect : Bool
+    var isIncorrect : Bool {
+        set (newValue) {
+            _isIncorrect = newValue;
+            if isIncorrect {
+                self.layer.borderColor = UIColor.redColor().CGColor;
+            } else {
+                self.layer.borderColor = self.borderColor?.CGColor ?? UIColor.clearColor().CGColor;
+            }
+        }
+        get {
+            return _isIncorrect;
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
+        _isIncorrect = false;
         super.init(coder: aDecoder);
         self.borderStyle = .None;
         self.layer.borderWidth = 1;
