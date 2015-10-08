@@ -35,9 +35,15 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loginController = _loginStoryBoard.instantiateInitialViewController()!
-        self.addChildViewController(loginController);
-        self.view.addSubview(loginController.view);
+        
+        if let loginInfo = Util.getLoginInfo() {
+            print("has loging_info \(loginInfo)")
+        } else {
+            let loginController = _loginStoryBoard.instantiateInitialViewController()!
+            self.addChildViewController(loginController);
+            self.view.addSubview(loginController.view);
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

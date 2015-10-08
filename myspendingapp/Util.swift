@@ -63,6 +63,20 @@ extension Manager {
     }
 }
 class Util {
+    private static let KEY_CHAIN_KEY = "log-in-info"
+    
+    static func setLoginInfo(obj : LogInInfo) -> Bool{
+        print("----------setLoginInfo---------");
+        return KeychainWrapper.setObject(obj, forKey: KEY_CHAIN_KEY);
+        
+    }
+    
+    static func getLoginInfo() -> LogInInfo? {
+        print("----------getLoginInfo---------");
+        return KeychainWrapper.objectForKey(KEY_CHAIN_KEY) as? LogInInfo;
+        
+    }
+    
     static let alamofireManager : Manager = { 
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
 //        configuration.timeoutIntervalForRequest = 20 // seconds

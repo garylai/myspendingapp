@@ -18,6 +18,8 @@
 		FC9D5CC31BC4EB57004BEE27 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC21BC4EB57004BEE27 /* RequiredRule.swift */; settings = {ASSET_TAGS = (); }; };
 		FC9D5CC51BC4EBEA004BEE27 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */; settings = {ASSET_TAGS = (); }; };
 		FC9D5CC71BC4F351004BEE27 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CC61BC4F351004BEE27 /* Validator.swift */; settings = {ASSET_TAGS = (); }; };
+		FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */; settings = {ASSET_TAGS = (); }; };
+		FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */; settings = {ASSET_TAGS = (); }; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
 		FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */; };
 		FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE2E1BABC6F7008A716B /* Login.storyboard */; };
@@ -59,6 +61,8 @@
 		FC9D5CC21BC4EB57004BEE27 /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
 		FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRule.swift; sourceTree = "<group>"; };
 		FC9D5CC61BC4F351004BEE27 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
+		FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInInfo.swift; sourceTree = "<group>"; };
 		FCE8DE271BABC6F7008A716B /* myspendingapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myspendingapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +122,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FC9D5CBF1BC4E849004BEE27 /* Validators */ = {
+		FC9D5CBF1BC4E849004BEE27 /* validators */ = {
 			isa = PBXGroup;
 			children = (
 				FC9D5CC01BC4E9EE004BEE27 /* Rule.swift */,
@@ -126,7 +130,23 @@
 				FC9D5CC41BC4EBEA004BEE27 /* EmailRule.swift */,
 				FC9D5CC61BC4F351004BEE27 /* Validator.swift */,
 			);
-			name = Validators;
+			name = validators;
+			sourceTree = "<group>";
+		};
+		FCBE27F71BC61C1A00D30EBE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		FCBE27FC1BC637DB00D30EBE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 		FCE8DE1E1BABC6F6008A716B = {
@@ -154,7 +174,9 @@
 		FCE8DE291BABC6F7008A716B /* myspendingapp */ = {
 			isa = PBXGroup;
 			children = (
-				FC9D5CBF1BC4E849004BEE27 /* Validators */,
+				FCBE27FC1BC637DB00D30EBE /* models */,
+				FCBE27F71BC61C1A00D30EBE /* lib */,
+				FC9D5CBF1BC4E849004BEE27 /* validators */,
 				FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */,
 				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
 				FCE8DE2E1BABC6F7008A716B /* Login.storyboard */,
@@ -375,6 +397,7 @@
 			files = (
 				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
 				FC9D5CC11BC4E9EE004BEE27 /* Rule.swift in Sources */,
+				FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */,
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
 				FC9D5CC71BC4F351004BEE27 /* Validator.swift in Sources */,
@@ -385,6 +408,7 @@
 				FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */,
 				FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */,
 				FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */,
+				FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

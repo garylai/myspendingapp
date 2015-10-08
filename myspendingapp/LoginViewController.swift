@@ -108,6 +108,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 encoding: .JSON,
                 successCallback: { (json) -> Void in
                     print(json);
+                    if let dict = json as? [String : String],
+                        let token = dict["token"],
+                        let userId = dict["id"] {
+//                            let loginInfo = LogInInfo(id: userId, token: token);
+//                            Util.setLoginInfo(loginInfo);
+                    } else {
+                        
+                    }
                 },
                 completedCallback: { () -> Void in
                     Util.mainController.showActivityIndicator = false;
