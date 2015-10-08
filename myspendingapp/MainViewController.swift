@@ -37,7 +37,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         if let loginInfo = Util.getLoginInfo() {
-            print("has loging_info \(loginInfo)")
+            print("has loging_info \(loginInfo)");
+//            Util.deleteLoginInfo();
         } else {
             let loginController = _loginStoryBoard.instantiateInitialViewController()!
             self.addChildViewController(loginController);

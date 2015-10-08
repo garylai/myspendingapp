@@ -102,7 +102,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if isValid {
             Util.mainController.showActivityIndicator = true;
             
-            print(url);
             Util.alamofireManager.requestWithCallbacks(.POST, url,
                 parameters: parameters,
                 encoding: .JSON,
@@ -111,16 +110,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     if let dict = json as? [String : String],
                         let token = dict["token"],
                         let userId = dict["id"] {
-//                            let loginInfo = LogInInfo(id: userId, token: token);
-//                            Util.setLoginInfo(loginInfo);
+                            let loginInfo = LogInInfo(id: userId, token: token);
+                            Util.setLoginInfo(loginInfo);
                     } else {
-                        
+                        let alert = UIAlertView(title: "Login Failed", message: nil, delegate: nil, cancelButtonTitle: "OK");
+                        alert.show();
                     }
+                },
+                failedCallback: { (error, message) -> Void in
                 },
                 completedCallback: { () -> Void in
                     Util.mainController.showActivityIndicator = false;
             })
         }
+    }
+    
+    private func showErrorMessage (message : String?) {
+        let title = { () -> String in
+            switch _mode{
+            case .Login:
+                return "Login Failed";
+            case .Register:
+                return "Registration Failed";
+            }
+        }();
+        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK");
+        alert.show();
     }
     
     private func setFieldsWithAnimation(animated : Bool = false){

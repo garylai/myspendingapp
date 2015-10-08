@@ -21,9 +21,8 @@ extension Manager {
         parameters: [String: AnyObject]? = nil,
         encoding: Alamofire.ParameterEncoding = .URL,
         headers: [String: String]? = nil,
-        surpassAlert: Bool = false,
         successCallback: ((AnyObject?) -> Void)? = nil,
-        failedCallback: ((kAPIError) -> Void)? = nil,
+        failedCallback: ((kAPIError, String?) -> Void)? = nil,
         completedCallback: (() -> Void)? = nil)
         -> Alamofire.Request
     {
@@ -53,9 +52,7 @@ extension Manager {
                     error = kAPIError.SystemReturned(result.error);
                 }
                 if error != nil {
-                    let alert = UIAlertView(title: "Login Failed", message: message, delegate: nil, cancelButtonTitle: "OK");
-                    alert.show();
-                    failedCallback?(error!)
+                    failedCallback?(error!, message);
                 }
                 print("completed");
                 completedCallback?();
@@ -66,15 +63,15 @@ class Util {
     private static let KEY_CHAIN_KEY = "log-in-info"
     
     static func setLoginInfo(obj : LogInInfo) -> Bool{
-        print("----------setLoginInfo---------");
         return KeychainWrapper.setObject(obj, forKey: KEY_CHAIN_KEY);
-        
     }
     
     static func getLoginInfo() -> LogInInfo? {
-        print("----------getLoginInfo---------");
         return KeychainWrapper.objectForKey(KEY_CHAIN_KEY) as? LogInInfo;
-        
+    }
+    
+    static func deleteLoginInfo() -> Bool {
+        return KeychainWrapper.removeObjectForKey(KEY_CHAIN_KEY);
     }
     
     static let alamofireManager : Manager = { 

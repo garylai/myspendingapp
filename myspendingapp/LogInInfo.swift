@@ -12,7 +12,7 @@ class LogInInfo : NSObject, NSCoding{
     let id : String?;
     let token : String?;
     
-    init(_ id: String, _ token: String) {
+    init(id: String, token: String) {
         self.id = id;
         self.token = token;
     }

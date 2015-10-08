@@ -183,12 +183,7 @@ public class KeychainWrapper {
         // Protect the keychain entry so it's only valid when the device is unlocked
         keychainQueryDictionary[SecAttrAccessible] = kSecAttrAccessibleWhenUnlocked
         
-        var result : AnyObject?;
-        let status: OSStatus = withUnsafeMutablePointer(&result) { p in
-            SecItemAdd(keychainQueryDictionary, p)
-        }
-        
-        print("setData: \(result)");
+        let status: OSStatus = SecItemAdd(keychainQueryDictionary, nil)
         
         if status == errSecSuccess {
             return true
