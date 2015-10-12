@@ -1,10 +1,13 @@
 PODS:
   - Alamofire (2.0.2)
+  - MSAModelMapper (0.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
+  - MSAModelMapper (~> 0.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  MSAModelMapper: d729f4d9c94a61ce376ce82cdccea84ec90b7469
 
 COCOAPODS: 0.38.2
