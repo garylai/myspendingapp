@@ -8,8 +8,11 @@
 
 import UIKit
 
-class RequiredRule : Rule {
-    func validate(targetField: UITextField) -> Bool {
+public class RequiredRule : Rule {
+    public init() {
+        
+    }
+    public func validate(targetField: UITextField) -> Bool {
         guard let text = targetField.text where !text.isEmpty else {
             return false
         }

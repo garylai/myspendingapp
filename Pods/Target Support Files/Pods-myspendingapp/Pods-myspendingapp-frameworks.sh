@@ -53,9 +53,11 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-myspendingapp/Alamofire.framework'
-  install_framework 'Pods-myspendingapp/MSAModelMapper.framework'
+  install_framework 'Pods-myspendingapp/MSAValidator.framework'
+  install_framework 'Pods-myspendingapp/ObjectMapper.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-myspendingapp/Alamofire.framework'
-  install_framework 'Pods-myspendingapp/MSAModelMapper.framework'
+  install_framework 'Pods-myspendingapp/MSAValidator.framework'
+  install_framework 'Pods-myspendingapp/ObjectMapper.framework'
 fi

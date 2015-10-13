@@ -4,12 +4,13 @@
 target 'myspendingapp' do
 	source 'https://github.com/CocoaPods/Specs.git'
     source 'https://garylaiph@bitbucket.org/garylaiph/mypodrepo.git'
-    
+
 	platform :ios, '8.0'
 	use_frameworks!
 
     pod 'Alamofire', '~> 2.0'
-    pod 'MSAModelMapper', '~>0.0.1'
+    pod 'MSAValidator', '~>0.1.0'
+    pod 'ObjectMapper', '~> 0.19'
 end
 
 target 'myspendingappTests' do

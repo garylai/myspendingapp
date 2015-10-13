@@ -1,0 +1,6 @@
+framework module MSAValidator {
+  umbrella header "MSAValidator-umbrella.h"
+
+  export *
+  module * { export * }
+}

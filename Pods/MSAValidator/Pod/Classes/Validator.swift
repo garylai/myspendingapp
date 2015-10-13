@@ -13,19 +13,19 @@ struct ValidationEntry {
     var name : String;
 }
 
-class Validator {
+public class Validator {
     private var _fieldsAndRules : [UITextField : ValidationEntry];
     
-    init () {
+    public init () {
         _fieldsAndRules = [UITextField : ValidationEntry]();
     }
     
-    func register(targetField : UITextField, withName fieldName: String, forRules rules : Rule...) {
+    public func register(targetField : UITextField, withName fieldName: String, forRules rules : Rule...) {
         let validationEntry = ValidationEntry(rules: rules, name: fieldName);
         _fieldsAndRules[targetField] = validationEntry;
     }
     
-    func validate() -> (valid: [UITextField], invalid: [UITextField : [Rule]], params: [String : String]) {
+    public func validate() -> (valid: [UITextField], invalid: [UITextField : [Rule]], params: [String : String]) {
         var invalidFields = [UITextField : [Rule]]();
         var validFields = [UITextField]();
         var params = [String : String]();

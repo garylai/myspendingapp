@@ -8,17 +8,17 @@
 
 import UIKit
 
-class EmailRule : Rule {
+public class EmailRule : Rule {
     static let REGEX_STR = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
     private let _regex : NSRegularExpression;
-    init () {
+    public init () {
         _regex = try! NSRegularExpression(pattern: EmailRule.REGEX_STR, options: []);
     }
-    func validate(targetField: UITextField) -> Bool {
+    public func validate(targetField: UITextField) -> Bool {
         if let text = targetField.text {
             let matches = _regex.matchesInString(text,
-                                                options: [],
-                                                range: NSRange(location: 0, length: text.characters.count));
+                options: [],
+                range: NSRange(location: 0, length: text.characters.count));
             return matches.count == 1;
         } else {
             return false;

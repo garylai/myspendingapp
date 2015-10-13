@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MSAValidator
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     private enum Mode : Int{

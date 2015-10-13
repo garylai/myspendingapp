@@ -1,13 +1,16 @@
 PODS:
   - Alamofire (2.0.2)
-  - MSAModelMapper (0.0.1)
+  - MSAValidator (0.1.0)
+  - ObjectMapper (0.19)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
-  - MSAModelMapper (~> 0.0.1)
+  - MSAValidator (~> 0.1.0)
+  - ObjectMapper (~> 0.19)
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
-  MSAModelMapper: d729f4d9c94a61ce376ce82cdccea84ec90b7469
+  MSAValidator: 206f61cc965ccbde6a857604acd4c91cadda8393
+  ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
 
 COCOAPODS: 0.38.2

@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol Rule {
+public protocol Rule {
     func validate(targetField: UITextField) -> Bool;
 }
