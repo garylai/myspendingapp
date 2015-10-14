@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; settings = {ASSET_TAGS = (); }; };
+		FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */; settings = {ASSET_TAGS = (); }; };
+		FC112D831BCE357F00E0BDE3 /* AddSpendingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		FC112D851BCE485D00E0BDE3 /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D841BCE485D00E0BDE3 /* SpendingType.swift */; settings = {ASSET_TAGS = (); }; };
+		FC112D871BCE48AE00E0BDE3 /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D861BCE48AE00E0BDE3 /* Spending.swift */; settings = {ASSET_TAGS = (); }; };
+		FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8A1BCE50BB00E0BDE3 /* TableViewTextView.xib */; settings = {ASSET_TAGS = (); }; };
+		FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */; settings = {ASSET_TAGS = (); }; };
+		FC112D8F1BCE53C000E0BDE3 /* TableViewButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */; settings = {ASSET_TAGS = (); }; };
+		FC112D911BCE53F700E0BDE3 /* TableViewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */; settings = {ASSET_TAGS = (); }; };
 		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; };
 		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
 		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,6 +57,14 @@
 		3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myspendingapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.release.xcconfig"; sourceTree = "<group>"; };
 		FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
+		FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddSpending.storyboard; sourceTree = "<group>"; };
+		FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendingListViewController.swift; sourceTree = "<group>"; };
+		FC112D841BCE485D00E0BDE3 /* SpendingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingType.swift; sourceTree = "<group>"; };
+		FC112D861BCE48AE00E0BDE3 /* Spending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
+		FC112D8A1BCE50BB00E0BDE3 /* TableViewTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewTextView.xib; sourceTree = "<group>"; };
+		FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewTextView.swift; sourceTree = "<group>"; };
+		FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewButtonView.xib; sourceTree = "<group>"; };
+		FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewButtonView.swift; sourceTree = "<group>"; };
 		FC49419B1BB3D17400C6349D /* MSATextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSATextField.swift; sourceTree = "<group>"; };
 		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FC743E301BC166AD008BF21F /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -124,6 +140,11 @@
 				FC49419B1BB3D17400C6349D /* MSATextField.swift */,
 				FC49419D1BB3D6A400C6349D /* MSAButton.swift */,
 				FC9D5CBB1BC37898004BEE27 /* Main.storyboard */,
+				FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */,
+				FC112D8A1BCE50BB00E0BDE3 /* TableViewTextView.xib */,
+				FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */,
+				FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */,
+				FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -133,6 +154,7 @@
 			children = (
 				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
 				FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */,
+				FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -150,6 +172,8 @@
 			children = (
 				FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */,
 				FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */,
+				FC112D841BCE485D00E0BDE3 /* SpendingType.swift */,
+				FC112D861BCE48AE00E0BDE3 /* Spending.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -318,9 +342,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC112D8F1BCE53C000E0BDE3 /* TableViewButtonView.xib in Resources */,
 				FCE8DE381BABC6F7008A716B /* LaunchScreen.storyboard in Resources */,
 				FCE8DE351BABC6F7008A716B /* Assets.xcassets in Resources */,
 				FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */,
+				FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */,
+				FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */,
 				FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,11 +426,16 @@
 				FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */,
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
+				FC112D851BCE485D00E0BDE3 /* SpendingType.swift in Sources */,
 				FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */,
+				FC112D831BCE357F00E0BDE3 /* AddSpendingListViewController.swift in Sources */,
+				FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */,
 				FC743E311BC166AE008BF21F /* Util.swift in Sources */,
 				FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */,
 				FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */,
+				FC112D871BCE48AE00E0BDE3 /* Spending.swift in Sources */,
 				FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */,
+				FC112D911BCE53F700E0BDE3 /* TableViewButtonView.swift in Sources */,
 				FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

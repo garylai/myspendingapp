@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum kAPIError {
+enum APIError {
     case ServerReturned(AnyObject?)
     case SystemReturned(ErrorType?)
 }
@@ -22,7 +22,7 @@ extension Manager {
         encoding: Alamofire.ParameterEncoding = .URL,
         headers: [String: String]? = nil,
         successCallback: ((AnyObject?) -> Void)? = nil,
-        failedCallback: ((kAPIError?, String?) -> Void)? = nil,
+        failedCallback: ((APIError?, String?) -> Void)? = nil,
         completedCallback: (() -> Void)? = nil)
         -> Alamofire.Request
     {
@@ -32,7 +32,7 @@ extension Manager {
             headers: headers)
             .responseJSON { _, response, result in
                 var message : String?
-                var error : kAPIError?
+                var error : APIError?
                 if let _ = result.error {
                     print("failed with: \(result.error)");
                     message = {
@@ -41,7 +41,7 @@ extension Manager {
                         }
                         return nil;
                         }();
-                    error = kAPIError.SystemReturned(result.error);
+                    error = APIError.SystemReturned(result.error);
                 } else if let statusCode = response?.statusCode {
                     if (200..<300).contains(statusCode) {
                         print("succeed with : \(result.value)");
@@ -50,7 +50,7 @@ extension Manager {
                         print(statusCode);
                         print("failed with : \(result.value)");
                         message = (result.value as? [String: [String]])?["errors"]?[0];
-                        error = kAPIError.ServerReturned(result.value);
+                        error = APIError.ServerReturned(result.value);
                     }
                 } else {
                     failedCallback?(nil, nil);

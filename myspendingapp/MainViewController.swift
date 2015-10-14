@@ -8,10 +8,18 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+enum AppSection {
+    case None
+    case LogIn
+    case AddSpending
+}
 
+class MainViewController: UIViewController {
     @IBOutlet weak var activityIndicatorContainerView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    private var _currentSection : AppSection;
+    private var _currentViewController : UIViewController?;
     
     var showActivityIndicator : Bool {
         get {
@@ -26,10 +34,45 @@ class MainViewController: UIViewController {
         }
     }
     
-    private let _loginStoryBoard : UIStoryboard;
+    func changeSection(to toSection : AppSection) {
+        let fromSection = _currentSection;
+        let currentViewController = _currentViewController;
+        
+        var targetViewController : UIViewController?;
+        
+        switch toSection {
+        case .None:
+            break;
+        case .LogIn:
+            let loginStoryBoard = UIStoryboard.init(name: "Login", bundle: nil);
+            targetViewController = loginStoryBoard.instantiateInitialViewController();
+        case .AddSpending:
+            let addSpendingStoryBoard = UIStoryboard.init(name: "AddSpending", bundle: nil);
+            targetViewController = addSpendingStoryBoard.instantiateInitialViewController();
+        }
+        
+        if let c = targetViewController {
+            self.addChildViewController(c);
+            self.view.addSubview(c.view);
+        }
+        
+        _currentSection = toSection;
+        _currentViewController = targetViewController;
+        
+        switch fromSection {
+        case .None:
+            break;
+        default:
+            if let c = currentViewController {
+                c.removeFromParentViewController();
+                c.view.removeFromSuperview();
+            }
+        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
-        _loginStoryBoard = UIStoryboard.init(name: "Login", bundle: nil);
+        _currentSection = .None;
         super.init(coder: aDecoder);
     }
     
@@ -39,11 +82,10 @@ class MainViewController: UIViewController {
         if let loginInfo = Util.getLoginInfo() {
             print("has loging_info id: \(loginInfo.id)");
             print("             token: \(loginInfo.token)");
-            Util.deleteLoginInfo();
+            //            Util.deleteLoginInfo();
+            changeSection(to: .AddSpending);
         } else {
-            let loginController = _loginStoryBoard.instantiateInitialViewController()!
-            self.addChildViewController(loginController);
-            self.view.addSubview(loginController.view);
+            changeSection(to: .LogIn);
         }
         
     }

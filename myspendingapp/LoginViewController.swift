@@ -111,6 +111,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     if let loginInfo = Mapper<LogInInfo>().map(json) where loginInfo.mappingValid! {
                         print(loginInfo);
                         Util.setLoginInfo(loginInfo);
+                        Util.mainController.changeSection(to: .AddSpending);
                     } else {
                         self.showErrorMessage();
                     }
