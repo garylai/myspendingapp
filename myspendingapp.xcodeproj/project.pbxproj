@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; settings = {ASSET_TAGS = (); }; };
 		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; };
 		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
 		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; settings = {ASSET_TAGS = (); }; };
@@ -47,6 +48,7 @@
 		04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myspendingapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.release.xcconfig"; sourceTree = "<group>"; };
+		FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
 		FC49419B1BB3D17400C6349D /* MSATextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSATextField.swift; sourceTree = "<group>"; };
 		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FC743E301BC166AD008BF21F /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -114,6 +116,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC112D781BCDFF7D00E0BDE3 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				FCE8DE2E1BABC6F7008A716B /* Login.storyboard */,
+				FCE8DE361BABC6F7008A716B /* LaunchScreen.storyboard */,
+				FC49419B1BB3D17400C6349D /* MSATextField.swift */,
+				FC49419D1BB3D6A400C6349D /* MSAButton.swift */,
+				FC9D5CBB1BC37898004BEE27 /* Main.storyboard */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		FC112D791BCDFF8D00E0BDE3 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
+				FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
 		FCBE27F71BC61C1A00D30EBE /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */,
+				FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -155,21 +179,16 @@
 		FCE8DE291BABC6F7008A716B /* myspendingapp */ = {
 			isa = PBXGroup;
 			children = (
+				FC112D791BCDFF8D00E0BDE3 /* controllers */,
+				FC112D781BCDFF7D00E0BDE3 /* views */,
 				FCBE27FC1BC637DB00D30EBE /* models */,
 				FCBE27F71BC61C1A00D30EBE /* lib */,
 				FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */,
-				FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */,
-				FCE8DE2E1BABC6F7008A716B /* Login.storyboard */,
 				FCE8DE341BABC6F7008A716B /* Assets.xcassets */,
-				FCE8DE361BABC6F7008A716B /* LaunchScreen.storyboard */,
 				FCE8DE391BABC6F7008A716B /* Info.plist */,
 				FCE8DE311BABC6F7008A716B /* myspendingapp.xcdatamodeld */,
-				FC49419B1BB3D17400C6349D /* MSATextField.swift */,
-				FC49419D1BB3D6A400C6349D /* MSAButton.swift */,
 				FC78EB8B1BC0C19F005E39FC /* Environment.swift */,
 				FC743E301BC166AD008BF21F /* Util.swift */,
-				FC9D5CBB1BC37898004BEE27 /* Main.storyboard */,
-				FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */,
 			);
 			path = myspendingapp;
 			sourceTree = "<group>";
@@ -377,6 +396,7 @@
 			files = (
 				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
 				FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */,
+				FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */,
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
 				FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */,

@@ -22,7 +22,7 @@ extension Manager {
         encoding: Alamofire.ParameterEncoding = .URL,
         headers: [String: String]? = nil,
         successCallback: ((AnyObject?) -> Void)? = nil,
-        failedCallback: ((kAPIError, String?) -> Void)? = nil,
+        failedCallback: ((kAPIError?, String?) -> Void)? = nil,
         completedCallback: (() -> Void)? = nil)
         -> Alamofire.Request
     {
@@ -33,24 +33,29 @@ extension Manager {
             .responseJSON { _, response, result in
                 var message : String?
                 var error : kAPIError?
-                if let statusCode = response?.statusCode where (200..<300).contains(statusCode){
+                if let _ = result.error {
+                    print("failed with: \(result.error)");
+                    message = {
+                        if let err = result.error as? NSURLError where err == .NotConnectedToInternet {
+                            return "Cannot connect to the internet";
+                        }
+                        return nil;
+                        }();
+                    error = kAPIError.SystemReturned(result.error);
+                } else if let statusCode = response?.statusCode {
+                    if (200..<300).contains(statusCode) {
                         print("succeed with : \(result.value)");
                         successCallback?(result.value);
-                } else if let _ = response?.statusCode {
-                        print(response?.statusCode);
+                    } else {
+                        print(statusCode);
                         print("failed with : \(result.value)");
                         message = (result.value as? [String: [String]])?["errors"]?[0];
                         error = kAPIError.ServerReturned(result.value);
+                    }
                 } else {
-                    print("failed with: \(result.error)");
-                    message = {
-                            if let err = result.error as? NSURLError where err == .NotConnectedToInternet {
-                                return "Cannot connect to the internet";
-                            }
-                            return nil;
-                        }();
-                    error = kAPIError.SystemReturned(result.error);
+                    failedCallback?(nil, nil);
                 }
+                
                 if error != nil {
                     failedCallback?(error!, message);
                 }
@@ -97,6 +102,9 @@ extension Dictionary {
     }
 }
 
+enum MappingError : ErrorType {
+    case Failed
+}
 
 
 

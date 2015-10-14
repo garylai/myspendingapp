@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import MSAValidator
+import ObjectMapper
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     private enum Mode : Int{
@@ -107,18 +108,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 parameters: parameters,
                 encoding: .JSON,
                 successCallback: { (json) -> Void in
-                    print(json);
-                    if let dict = json as? [String : String],
-                        let token = dict["token"],
-                        let userId = dict["id"] {
-                            let loginInfo = LogInInfo(id: userId, token: token);
-                            Util.setLoginInfo(loginInfo);
+                    if let loginInfo = Mapper<LogInInfo>().map(json) where loginInfo.mappingValid! {
+                        print(loginInfo);
+                        Util.setLoginInfo(loginInfo);
                     } else {
-                        let alert = UIAlertView(title: "Login Failed", message: nil, delegate: nil, cancelButtonTitle: "OK");
-                        alert.show();
+                        self.showErrorMessage();
                     }
                 },
                 failedCallback: { (error, message) -> Void in
+                    self.showErrorMessage(message);
                 },
                 completedCallback: { () -> Void in
                     Util.mainController.showActivityIndicator = false;
@@ -126,7 +124,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func showErrorMessage (message : String?) {
+    private func showErrorMessage (message : String? = nil) {
         let title = { () -> String in
             switch _mode{
             case .Login:
