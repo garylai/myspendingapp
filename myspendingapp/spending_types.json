@@ -1,0 +1,26 @@
+ [
+  {
+  "id": 6,
+  "name": "others"
+  },
+  {
+  "id": 5,
+  "name": "recurring expenditure"
+  },
+  {
+  "id": 4,
+  "name": "clothing"
+  },
+  {
+  "id": 3,
+  "name": "transportation"
+  },
+  {
+  "id": 2,
+  "name": "entertainment"
+  },
+  {
+  "id": 1,
+  "name": "food"
+  }
+  ]

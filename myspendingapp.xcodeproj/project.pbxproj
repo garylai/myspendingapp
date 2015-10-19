@@ -17,6 +17,8 @@
 		FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */; settings = {ASSET_TAGS = (); }; };
 		FC112D8F1BCE53C000E0BDE3 /* TableViewButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */; settings = {ASSET_TAGS = (); }; };
 		FC112D911BCE53F700E0BDE3 /* TableViewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */; settings = {ASSET_TAGS = (); }; };
+		FC14B7991BD4C3A40076DD29 /* spending_types.json in Resources */ = {isa = PBXBuildFile; fileRef = FC14B7981BD4C3A40076DD29 /* spending_types.json */; settings = {ASSET_TAGS = (); }; };
+		FC14B79B1BD4C3C20076DD29 /* spending_types.json in Resources */ = {isa = PBXBuildFile; fileRef = FC14B7981BD4C3A40076DD29 /* spending_types.json */; };
 		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; };
 		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
 		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +67,7 @@
 		FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewTextView.swift; sourceTree = "<group>"; };
 		FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewButtonView.xib; sourceTree = "<group>"; };
 		FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewButtonView.swift; sourceTree = "<group>"; };
+		FC14B7981BD4C3A40076DD29 /* spending_types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spending_types.json; sourceTree = "<group>"; };
 		FC49419B1BB3D17400C6349D /* MSATextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSATextField.swift; sourceTree = "<group>"; };
 		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FC743E301BC166AD008BF21F /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -159,6 +162,14 @@
 			name = controllers;
 			sourceTree = "<group>";
 		};
+		FC14B79A1BD4C3B00076DD29 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC14B7981BD4C3A40076DD29 /* spending_types.json */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		FCBE27F71BC61C1A00D30EBE /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +214,7 @@
 		FCE8DE291BABC6F7008A716B /* myspendingapp */ = {
 			isa = PBXGroup;
 			children = (
+				FC14B79A1BD4C3B00076DD29 /* resources */,
 				FC112D791BCDFF8D00E0BDE3 /* controllers */,
 				FC112D781BCDFF7D00E0BDE3 /* views */,
 				FCBE27FC1BC637DB00D30EBE /* models */,
@@ -349,6 +361,7 @@
 				FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */,
 				FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */,
 				FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */,
+				FC14B7991BD4C3A40076DD29 /* spending_types.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC14B79B1BD4C3C20076DD29 /* spending_types.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

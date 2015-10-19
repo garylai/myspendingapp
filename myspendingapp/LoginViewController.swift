@@ -81,13 +81,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             switch _mode {
             case .Register:
-                url = "\(ENV.APIURLPrefix)/user";
+                url = "user";
                 let registerValidationResult = _registerValidator.validate();
                 validFields.appendContentsOf(registerValidationResult.valid);
                 invalidFields.merge(registerValidationResult.invalid);
                 params.merge(registerValidationResult.params);
             case .Login:
-                url = "\(ENV.APIURLPrefix)/user/token";
+                url = "user/token";
             }
             
             for tf in validFields {

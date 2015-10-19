@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import CoreData
+import ObjectMapper
 
 enum APIError {
     case ServerReturned(AnyObject?)
@@ -29,7 +30,7 @@ private class Dummy {
 extension Manager {
     func requestWithCallbacks (
         method: Alamofire.Method,
-        _ URLString: Alamofire.URLStringConvertible,
+        _ relativePath: String,
         parameters: [String: AnyObject]? = nil,
         encoding: Alamofire.ParameterEncoding = .URL,
         headers: [String: String]? = nil,
@@ -38,7 +39,7 @@ extension Manager {
         completedCallback: (() -> Void)? = nil)
         -> Alamofire.Request
     {
-        return self.request(method, URLString,
+        return self.request(method, "\(ENV.APIURLPrefix)/\(relativePath)",
             parameters: parameters,
             encoding: encoding,
             headers: headers)
@@ -80,6 +81,8 @@ extension Manager {
 class Util {
     private static let KEY_CHAIN_KEY = "log-in-info"
     
+    static var spendingTypes : [SpendingType]!;
+    
     static func setLoginInfo(obj : LogInInfo) -> Bool{
         return KeychainWrapper.setObject(obj, forKey: KEY_CHAIN_KEY);
     }
@@ -103,6 +106,19 @@ class Util {
             let appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate;
             return appDelegate.window!.rootViewController as! MainViewController;
         }
+    }
+    
+    static func loadSpendingType() -> Bool {
+        guard let path = NSBundle.mainBundle().pathForResource("spending_types", ofType: "json") else {
+            return false;
+        }
+        let jsonString = try! NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+        if let sts = Mapper<SpendingType>().mapArray(jsonString as String?) {
+            spendingTypes = sts;
+        } else {
+            return false;
+        }
+        return true;
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 enum AppSection {
     case None
@@ -78,6 +79,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard Util.loadSpendingType() else {
+            exit(0);
+        }
         
         if let loginInfo = Util.getLoginInfo() {
             print("has loging_info id: \(loginInfo.id)");

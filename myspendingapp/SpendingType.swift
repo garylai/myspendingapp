@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class SpendingType : ModelBase {
-    var id : String?;
+    var id : Int?;
     var name : String?;
     
     required init?(_ map: Map) {
