@@ -17,19 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-zh-MeJ">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-zh-MeJ">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="SU8-ma-tOC"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Confirm"/>
                                 <connections>
                                     <action selector="onClickAdd:" destination="XXt-sN-GIe" eventType="touchUpInside" id="bbo-To-OYN"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bJm-Z1-uPP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XXt-sN-GIe" id="4aK-zo-gJp"/>
                                     <outlet property="delegate" destination="XXt-sN-GIe" id="a9F-bP-QMa"/>
@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="1233" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Spending View Controller-->
         <scene sceneID="Uqr-9I-V6j">
             <objects>
-                <viewController id="Z2M-MS-s90" sceneMemberID="viewController">
+                <viewController id="Z2M-MS-s90" customClass="AddSpendingViewController" customModule="myspendingapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uje-vi-OMd"/>
                         <viewControllerLayoutGuide type="bottom" id="a4u-Op-gV1"/>
@@ -95,6 +95,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cmg-W1-D0x"/>
+        <segue reference="eyV-oT-B36"/>
     </inferredMetricsTieBreakers>
 </document>

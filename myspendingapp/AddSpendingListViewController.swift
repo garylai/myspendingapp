@@ -9,19 +9,50 @@
 import UIKit
 
 class AddSpendingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    private var _tmpSpendings : [NSDate: [Spending]]!;
+    private var _sortedSpendingDates : [NSDate]!;
+    private let _dateFormatter : NSDateFormatter;
+    
     @IBOutlet weak var tableView: UITableView!
     @IBAction func onClickAdd(sender: UIButton) {
         print("Add!!!");
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        _tmpSpendings = [NSDate: [Spending]]();
+        _sortedSpendingDates = [NSDate]();
+        _dateFormatter = NSDateFormatter();
+        _dateFormatter.dateFormat = "dd-MM-yyyy";
+        super.init(coder: aDecoder);
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerNib(UINib.init(nibName: "TableViewTextView", bundle: nil),
-            forHeaderFooterViewReuseIdentifier: "text_based")
+            forHeaderFooterViewReuseIdentifier: "text_based");
         
         tableView.registerNib(UINib.init(nibName: "TableViewButtonView", bundle: nil),
-            forHeaderFooterViewReuseIdentifier: "button_based")
+            forHeaderFooterViewReuseIdentifier: "button_based");
+        
+        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
+        footer.button.setTitle("add spending", forState: .Normal);
+        footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+        
+        var frame = footer.frame;
+        frame.size.height = 0;
+        footer.frame = frame;
+        
+        tableView.tableFooterView = footer;
+        
+        goToAdd();
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+        if let height = tableView.tableFooterView?.frame.size.height {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,11 +61,12 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
+        return _tmpSpendings.keys.count;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        let date = _sortedSpendingDates[section];
+        return _tmpSpendings[date]!.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,14 +86,19 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("text_based") as! TableViewTextView;
-        view.label.text = "yoyoyoy!";
+        
+        view.label.text = "hehe"//_dateFormatter.stringFromDate(_sortedSpendingDates[section]);
+        
         return view;
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
-        view.button.setTitle("yeah", forState: .Normal);
+        
+        let dateString = "haha"//_dateFormatter.stringFromDate(_sortedSpendingDates[section]);
+        view.button.setTitle("add more for \(dateString)", forState: .Normal);
         view.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+        
         return view;
     }
     
