@@ -87,7 +87,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("text_based") as! TableViewTextView;
         
-        view.label.text = "hehe"//_dateFormatter.stringFromDate(_sortedSpendingDates[section]);
+        view.label.text = _dateFormatter.stringFromDate(_sortedSpendingDates[section]);
         
         return view;
     }
@@ -95,7 +95,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
         
-        let dateString = "haha"//_dateFormatter.stringFromDate(_sortedSpendingDates[section]);
+        let dateString = _dateFormatter.stringFromDate(_sortedSpendingDates[section]);
         view.button.setTitle("add more for \(dateString)", forState: .Normal);
         view.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
         
