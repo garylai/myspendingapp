@@ -16,7 +16,6 @@
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="PyQ-LB-Tdg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9rF-OM-scE"/>
                 <constraint firstAttribute="trailing" secondItem="PyQ-LB-Tdg" secondAttribute="trailing" id="Du0-bg-AaT"/>
