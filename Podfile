@@ -8,7 +8,7 @@ target 'myspendingapp' do
 	platform :ios, '8.0'
 	use_frameworks!
 
-    pod 'Alamofire', '~> 2.0'
+    pod 'Alamofire', '~> 3.0'
     pod 'MSAValidator', '~>0.1.0'
     pod 'ObjectMapper', '~> 0.19'
 end

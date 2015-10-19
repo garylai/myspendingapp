@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (2.0.2)
+  - Alamofire (3.0.0)
   - MSAValidator (0.1.0)
   - ObjectMapper (0.19)
 
 DEPENDENCIES:
-  - Alamofire (~> 2.0)
+  - Alamofire (~> 3.0)
   - MSAValidator (~> 0.1.0)
   - ObjectMapper (~> 0.19)
 
 SPEC CHECKSUMS:
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Alamofire: b61782387f81bcc538a0284cf2bb5d7995cd0a80
   MSAValidator: 206f61cc965ccbde6a857604acd4c91cadda8393
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
 

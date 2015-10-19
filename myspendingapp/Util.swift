@@ -8,10 +8,22 @@
 
 import Foundation
 import Alamofire
+import CoreData
 
 enum APIError {
     case ServerReturned(AnyObject?)
     case SystemReturned(ErrorType?)
+}
+
+// Dummy class to make the error as NSError works in AppDelegate
+// Compiler magic not working without this class
+private class Dummy {
+    private func foo() throws { }
+    private func bar () {
+        do {
+            try foo()
+        } catch ( _ as NSError){ }
+    }
 }
 
 extension Manager {
@@ -30,27 +42,27 @@ extension Manager {
             parameters: parameters,
             encoding: encoding,
             headers: headers)
-            .responseJSON { _, response, result in
+            .responseJSON { response in
                 var message : String?
                 var error : APIError?
-                if let _ = result.error {
-                    print("failed with: \(result.error)");
+                if let _ = response.result.error {
+                    print("failed with: \(response.result.error)");
                     message = {
-                        if let err = result.error as? NSURLError where err == .NotConnectedToInternet {
+                        if let err = response.result.error as? NSURLError where err == .NotConnectedToInternet {
                             return "Cannot connect to the internet";
                         }
                         return nil;
                         }();
-                    error = APIError.SystemReturned(result.error);
-                } else if let statusCode = response?.statusCode {
+                    error = APIError.SystemReturned(response.result.error);
+                } else if let statusCode = response.response?.statusCode {
                     if (200..<300).contains(statusCode) {
-                        print("succeed with : \(result.value)");
-                        successCallback?(result.value);
+                        print("succeed with : \(response.result.value)");
+                        successCallback?(response.result.value);
                     } else {
                         print(statusCode);
-                        print("failed with : \(result.value)");
-                        message = (result.value as? [String: [String]])?["errors"]?[0];
-                        error = APIError.ServerReturned(result.value);
+                        print("failed with : \(response.result.value)");
+                        message = (response.result.value as? [String: [String]])?["errors"]?[0];
+                        error = APIError.ServerReturned(response.result.value);
                     }
                 } else {
                     failedCallback?(nil, nil);
@@ -64,6 +76,7 @@ extension Manager {
         }
     }
 }
+
 class Util {
     private static let KEY_CHAIN_KEY = "log-in-info"
     
@@ -102,9 +115,7 @@ extension Dictionary {
     }
 }
 
-enum MappingError : ErrorType {
-    case Failed
-}
+
 
 
 
