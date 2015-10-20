@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
     private enum EditMode : Int {
         case None = 1
         case Date
@@ -56,7 +56,9 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
                 tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
             case .Type:
                 tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(typePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
-            default: ()
+            case .None:
+                amountTextField.resignFirstResponder();
+                noteTextView.resignFirstResponder();
             }
         }
         didSet {
@@ -116,6 +118,18 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         default:
             _editMode = .None;
         }
+    }
+    
+    // MARK: - Text Field Delegate
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        _editMode = .None;
+        return true;
+    }
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        _editMode = .None;
+        return true;
     }
 
     // MARK: - Table view data source
