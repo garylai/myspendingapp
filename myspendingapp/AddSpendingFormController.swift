@@ -8,8 +8,78 @@
 
 import UIKit
 
-class AddSpendingFormController: UITableViewController {
-        
+class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    private enum EditMode : Int {
+        case None = 1
+        case Date
+        case Type
+    }
+    
+    @IBOutlet weak var dateCell: UITableViewCell!
+    @IBOutlet weak var datePickerCell: UITableViewCell!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var amountCell: UITableViewCell!
+    @IBOutlet weak var amountTextField: UITextField!
+    
+    @IBOutlet weak var typeCell: UITableViewCell!
+    @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var typePickerCell: UITableViewCell!
+    @IBOutlet weak var typePicker: UIPickerView!
+    
+    @IBOutlet weak var noteCell: UITableViewCell!
+    @IBOutlet weak var noteTextView: UITextView!
+    
+    private var cellArrangement : (order: [UITableViewCell], height: [CGFloat]) {
+        get{
+            switch _editMode{
+            case .None:
+                return ([dateCell, amountCell, typeCell, noteCell], [44, 44, 44, 200]);
+            case .Date:
+                return ([dateCell, datePickerCell, amountCell, typeCell, noteCell], [44, 200, 44, 44, 200]);
+            case .Type:
+                return ([dateCell, amountCell, typeCell, typePickerCell, noteCell], [44, 44, 44, 200, 200]);
+            }
+        }
+    }
+    
+    private var _editMode : EditMode {
+        willSet(newValue) {
+            tableView.beginUpdates();
+            guard _editMode != newValue else {
+                return;
+            }
+            
+            switch _editMode {
+            case .Date:
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
+            case .Type:
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(typePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
+            default: ()
+            }
+        }
+        didSet {
+            guard _editMode != oldValue else {
+                tableView.endUpdates();
+                return;
+            }
+            switch _editMode {
+            case .Date:
+                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
+            case .Type:
+                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(typePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
+            default: ()
+            }
+            tableView.endUpdates();
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        _editMode = .None;
+        super.init(coder: aDecoder);
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Add Spending";
@@ -27,78 +97,56 @@ class AddSpendingFormController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 1 {
-            return 200;
-        } else {
-            return 44;
+        let heights = cellArrangement.height;
+        return heights[indexPath.row];
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        setModeByIndexPath(indexPath);
+        return nil;
+    }
+    
+    private func setModeByIndexPath(indexPath: NSIndexPath) {
+        let targetCell = cellArrangement.order[indexPath.row];
+        switch targetCell {
+        case dateCell:
+            _editMode = .Date;
+        case typeCell:
+            _editMode = .Type;
+        default:
+            _editMode = .None;
         }
     }
 
     // MARK: - Table view data source
 
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1;
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return self.cellArrangement.order.count;
+    }
+
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return self.cellArrangement.order[indexPath.row];
+    }
+    
+    // MARK: - Picker View
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Util.spendingTypes.count;
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let spendingType = Util.spendingTypes[row];
+        return spendingType.name;
+    }
 }
