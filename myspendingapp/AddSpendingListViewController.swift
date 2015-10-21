@@ -35,25 +35,25 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         tableView.registerNib(UINib.init(nibName: "TableViewButtonView", bundle: nil),
             forHeaderFooterViewReuseIdentifier: "button_based");
         
-        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
-        footer.button.setTitle("add spending", forState: .Normal);
-        footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
-        
-        var frame = footer.frame;
-        frame.size.height = 0;
-        footer.frame = frame;
-        
-        tableView.tableFooterView = footer;
+//        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
+//        footer.button.setTitle("add spending", forState: .Normal);
+//        footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+//        
+//        var frame = footer.frame;
+//        frame.size.height = 0;
+//        footer.frame = frame;
+//        
+//        tableView.tableFooterView = footer;
         
         goToAdd();
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated);
-        if let height = tableView.tableFooterView?.frame.size.height {
-            tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
-        }
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated);
+//        if let height = tableView.tableFooterView?.frame.size.height {
+//            tableView.contentInset = UIEdgeInsetsMake(0, 0, height + 200, 0);
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,10 +61,13 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return _tmpSpendings.keys.count;
+        return _tmpSpendings.keys.count + 1;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == _tmpSpendings.keys.count {
+            return 0;
+        }
         let date = _sortedSpendingDates[section];
         return _tmpSpendings[date]!.count;
     }
@@ -85,6 +88,13 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section < _tmpSpendings.keys.count else {
+            let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
+            footer.button.setTitle("add spending", forState: .Normal);
+            footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+            
+            return footer;
+        }
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("text_based") as! TableViewTextView;
         
         view.label.text = _dateFormatter.stringFromDate(_sortedSpendingDates[section]);
@@ -93,6 +103,9 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard section < _tmpSpendings.keys.count else {
+            return nil;
+        }
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
         
         let dateString = _dateFormatter.stringFromDate(_sortedSpendingDates[section]);
