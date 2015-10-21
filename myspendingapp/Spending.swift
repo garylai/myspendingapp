@@ -12,9 +12,14 @@ import ObjectMapper
 class Spending : ModelBase {
     var id : String?;
     var userId: String?;
-    var spendingTypeId : String?;
+    var spendingTypeId : Int?;
     var value : Float?;
     var date : NSDate?;
+    var note : String?;
+    
+    override init() {
+        super.init();
+    }
     
     required init?(_ map: Map) {
         super.init(map);

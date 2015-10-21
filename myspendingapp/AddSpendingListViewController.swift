@@ -54,6 +54,22 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
 //            tableView.contentInset = UIEdgeInsetsMake(0, 0, height + 200, 0);
 //        }
 //    }
+    
+    @IBAction func addedSpendingAndBack(segue: UIStoryboardSegue) {
+        if segue.identifier == "add_and_back_to_list" {
+            if let createdSpending = (segue.sourceViewController as? AddSpendingFormController)?.createdSpending {
+                if _tmpSpendings[createdSpending.date!] == nil {
+                    _tmpSpendings[createdSpending.date!] = [Spending]();
+                }
+                _tmpSpendings[createdSpending.date!]!.append(createdSpending);
+                _sortedSpendingDates = Array(_tmpSpendings.keys).sort({ (aDate, bDate) -> Bool in
+                    return aDate.compare(bDate) == .OrderedDescending;
+                })
+            }
+        }
+        print(_tmpSpendings);
+        tableView.reloadData();
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
