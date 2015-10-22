@@ -65,18 +65,21 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
             let originalSpending = (segue.sourceViewController as? AddSpendingFormController)?.targetSpending {
                 if updatedSpending.date != originalSpending.date {
                     if var arr = _tmpSpendings[originalSpending.date!],
-                        let index = arr.indexOf(originalSpending){
-                            arr.removeAtIndex(index);
+                        let rowIndex = arr.indexOf(originalSpending){
+                            arr.removeAtIndex(rowIndex);
                             if arr.count == 0 {
                                 _tmpSpendings.removeValueForKey(originalSpending.date!);
+                                _sortedSpendingDates = createSortedDate();
+                            } else {
+                                _tmpSpendings[originalSpending.date!] = arr;
                             }
                     }
                     
                     if _tmpSpendings[updatedSpending.date!] == nil {
                         _tmpSpendings[updatedSpending.date!] = [Spending]();
+                        _sortedSpendingDates = createSortedDate();
                     }
                     _tmpSpendings[updatedSpending.date!]!.append(updatedSpending);
-                    _sortedSpendingDates = createSortedDate();
                 } else {
                     originalSpending.value = updatedSpending.value;
                     originalSpending.spendingTypeId = updatedSpending.spendingTypeId;
@@ -174,6 +177,24 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         view.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
         
         return view;
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteRow = UITableViewRowAction(style: .Default, title: "remove") { (rowAction, indexPath) -> Void in
+            let date = self._sortedSpendingDates[indexPath.section];
+            if var arr = self._tmpSpendings[date]{
+                arr.removeAtIndex(indexPath.row);
+                if arr.count == 0 {
+                    self._tmpSpendings.removeValueForKey(date);
+                    self._sortedSpendingDates = self.createSortedDate();
+                    tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Left);
+                } else {
+                    self._tmpSpendings[date] = arr;
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left);
+                }
+            }
+        }
+        return [deleteRow];
     }
 
     /*
