@@ -216,9 +216,22 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     // MARK: - Text Field Delegate
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        textField.text = (textField.text as NSString?)?.stringByReplacingCharactersInRange(range, withString: string);
-        validateForm();
+        if let newText = (textField.text as NSString?)?.stringByReplacingCharactersInRange(range, withString: string){
+            if newText.isEmpty {
+                textField.text = ""
+            } else if let _ = Float(newText) {
+                textField.text = newText;
+            }
+            validateForm();
+        }
         return false;
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if let text = textField.text,
+            let newValue = Float(text) {
+            textField.text = "\(newValue)";
+        }
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
