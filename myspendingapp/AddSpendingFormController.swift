@@ -119,7 +119,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         if _mode == .Adding {
             targetSegueId = "add_and_back_to_list";
         }
-        resultSpending.spendingTypeId = Util.spendingTypes[typePicker.selectedRowInComponent(0)].id;
+        resultSpending.spendingTypeId = Util.spendingTypes[typePicker.selectedRowInComponent(0) - 1].id;
         resultSpending.value = Float(amountTextField.text!);
         resultSpending.date = calendar.dateFromComponents(compenents);
         resultSpending.note = _noteContent;
@@ -156,8 +156,8 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
                 datePicker.date = date;
                 amountTextField.text = "\(value)";
                 
-                typePicker.selectRow(index, inComponent: 0, animated: false);
-                self.pickerView(typePicker, didSelectRow: index, inComponent: 0);
+                typePicker.selectRow(index + 1, inComponent: 0, animated: false);
+                self.pickerView(typePicker, didSelectRow: index + 1, inComponent: 0);
                 
                 self.textViewShouldBeginEditing(noteTextView);
                 noteTextView.text = spending.note;
