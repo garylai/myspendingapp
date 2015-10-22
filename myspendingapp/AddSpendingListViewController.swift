@@ -14,9 +14,8 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     private let _dateFormatter : NSDateFormatter;
     
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func onClickAdd(sender: UIButton) {
-        print("Add!!!");
-    }
+    
+    var addedOrUpdatedSpending : Spending?;
     
     required init?(coder aDecoder: NSCoder) {
         _tmpSpendings = [NSDate: [Spending]]();
@@ -24,6 +23,23 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         _dateFormatter = NSDateFormatter();
         _dateFormatter.dateFormat = "dd-MM-yyyy";
         super.init(coder: aDecoder);
+    }
+    
+    func editExisting(spending : Spending?) {
+        performSegueWithIdentifier("edit_existing", sender: spending);
+    }
+    
+    func goToAdd(){
+        performSegueWithIdentifier("add_new", sender: self);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        addedOrUpdatedSpending = nil;
+        if segue.identifier == "edit_existing" {
+            if let destination = segue.destinationViewController as? AddSpendingFormController {
+                destination.targetSpending = sender as? Spending;
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -35,39 +51,49 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         tableView.registerNib(UINib.init(nibName: "TableViewButtonView", bundle: nil),
             forHeaderFooterViewReuseIdentifier: "button_based");
         
-//        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
-//        footer.button.setTitle("add spending", forState: .Normal);
-//        footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
-//        
-//        var frame = footer.frame;
-//        frame.size.height = 0;
-//        footer.frame = frame;
-//        
-//        tableView.tableFooterView = footer;
-        
         goToAdd();
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated);
-//        if let height = tableView.tableFooterView?.frame.size.height {
-//            tableView.contentInset = UIEdgeInsetsMake(0, 0, height + 200, 0);
-//        }
-//    }
+    private func createSortedDate() -> [NSDate]{
+        return Array(_tmpSpendings.keys).sort({ (aDate, bDate) -> Bool in
+            return aDate.compare(bDate) == .OrderedDescending;
+        })
+    }
+    
+    @IBAction func editedSpendingAndBack(segue: UIStoryboardSegue) {
+        if let updatedSpending = addedOrUpdatedSpending ,
+            let originalSpending = (segue.sourceViewController as? AddSpendingFormController)?.targetSpending {
+                if updatedSpending.date != originalSpending.date {
+                    if var arr = _tmpSpendings[originalSpending.date!],
+                        let index = arr.indexOf(originalSpending){
+                            arr.removeAtIndex(index);
+                            if arr.count == 0 {
+                                _tmpSpendings.removeValueForKey(originalSpending.date!);
+                            }
+                    }
+                    
+                    if _tmpSpendings[updatedSpending.date!] == nil {
+                        _tmpSpendings[updatedSpending.date!] = [Spending]();
+                    }
+                    _tmpSpendings[updatedSpending.date!]!.append(updatedSpending);
+                    _sortedSpendingDates = createSortedDate();
+                } else {
+                    originalSpending.value = updatedSpending.value;
+                    originalSpending.spendingTypeId = updatedSpending.spendingTypeId;
+                    originalSpending.note = updatedSpending.note;
+                }
+                tableView.reloadData();
+        }
+    }
     
     @IBAction func addedSpendingAndBack(segue: UIStoryboardSegue) {
-        if segue.identifier == "add_and_back_to_list" {
-            if let createdSpending = (segue.sourceViewController as? AddSpendingFormController)?.createdSpending {
-                if _tmpSpendings[createdSpending.date!] == nil {
-                    _tmpSpendings[createdSpending.date!] = [Spending]();
-                }
-                _tmpSpendings[createdSpending.date!]!.append(createdSpending);
-                _sortedSpendingDates = Array(_tmpSpendings.keys).sort({ (aDate, bDate) -> Bool in
-                    return aDate.compare(bDate) == .OrderedDescending;
-                })
+        if let createdSpending = addedOrUpdatedSpending {
+            if _tmpSpendings[createdSpending.date!] == nil {
+                _tmpSpendings[createdSpending.date!] = [Spending]();
+                _sortedSpendingDates = createSortedDate();
             }
+            _tmpSpendings[createdSpending.date!]!.append(createdSpending);
         }
-        print(_tmpSpendings);
         tableView.reloadData();
     }
 
@@ -76,6 +102,15 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK - table view
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let date = _sortedSpendingDates[indexPath.section];
+        let spending = _tmpSpendings[date]?[indexPath.row];
+        editExisting(spending);
+        return nil;
+    }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return _tmpSpendings.keys.count + 1;
     }
@@ -139,10 +174,6 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         view.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
         
         return view;
-    }
-    
-    func goToAdd(){
-        performSegueWithIdentifier("add_new", sender: nil);
     }
 
     /*

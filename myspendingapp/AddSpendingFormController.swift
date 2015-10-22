@@ -10,12 +10,17 @@ import UIKit
 import MSAValidator
 
 class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
-    private enum EditMode : Int {
+    private enum EditingField : Int {
         case None = 1
         case Date
         case Amount
         case Type
         case Note
+    }
+    
+    private enum Mode : Int {
+        case Editing = 1
+        case Adding
     }
     
     @IBOutlet weak var dateCell: UITableViewCell!
@@ -35,18 +40,20 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var noteTextView: UITextView!
     
     private var _validator : Validator!;
-    private var _noteContent : String?;
+    private var _noteContent : String!;
     
-    var createdSpending : Spending?;
+    var targetSpending : Spending?;
     
-    private var _editMode : EditMode {
+    private var _mode : Mode?;
+    
+    private var _editingField : EditingField {
         willSet(newValue) {
             tableView.beginUpdates();
-            guard _editMode != newValue else {
+            guard _editingField != newValue else {
                 return;
             }
             
-            switch _editMode {
+            switch _editingField {
             case .Date:
                 dateTextField.textColor = UIColor.blackColor();
                 tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
@@ -61,11 +68,11 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
             }
         }
         didSet {
-            guard _editMode != oldValue else {
+            guard _editingField != oldValue else {
                 tableView.endUpdates();
                 return;
             }
-            switch _editMode {
+            switch _editingField {
             case .Date:
                 dateTextField.textColor = UIColor.redColor();
                 tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
@@ -87,19 +94,9 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         dateTextField.text = formater.stringFromDate(sender.date);
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0 {
-            typeTextField.text = "";
-        } else {
-            let option = Util.spendingTypes[row - 1];
-            typeTextField.text = option.name;
-        }
-        validateForm();
-    }
-    
     private var cellArrangement : (order: [UITableViewCell], height: [CGFloat]) {
         get{
-            switch _editMode{
+            switch _editingField{
             case .Date:
                 return ([dateCell, datePickerCell, amountCell, typeCell, noteCell], [44, 200, 44, 44, 200]);
             case .Type:
@@ -111,19 +108,29 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func onDone() {
-        _editMode = .None;
+        _editingField = .None;
         
         let calendar = NSCalendar.currentCalendar();
         calendar.timeZone = NSTimeZone(forSecondsFromGMT: 0);
         let compenents = calendar.components([.Month, .Day, .Year], fromDate: datePicker.date);
         
-        createdSpending = Spending();
-        createdSpending!.spendingTypeId = Util.spendingTypes[typePicker.selectedRowInComponent(0)].id;
-        createdSpending!.value = Float(amountTextField.text!);
-        createdSpending!.date = calendar.dateFromComponents(compenents);
-        createdSpending!.note = _noteContent;
+        let resultSpending = Spending();
+        var targetSegueId = "edited_and_back_to_list";
+        if _mode == .Adding {
+            targetSegueId = "add_and_back_to_list";
+        }
+        resultSpending.spendingTypeId = Util.spendingTypes[typePicker.selectedRowInComponent(0)].id;
+        resultSpending.value = Float(amountTextField.text!);
+        resultSpending.date = calendar.dateFromComponents(compenents);
+        resultSpending.note = _noteContent;
         
-        self.performSegueWithIdentifier("add_and_back_to_list", sender: self);
+        self.performSegueWithIdentifier(targetSegueId, sender: resultSpending);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let destination = segue.destinationViewController as? AddSpendingListViewController {
+            destination.addedOrUpdatedSpending = sender as? Spending;
+        }
     }
     
     func validateForm() {
@@ -131,21 +138,48 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     required init?(coder aDecoder: NSCoder) {
-        _editMode = .None;
+        _editingField = .None;
         _validator = Validator();
         super.init(coder: aDecoder);
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        
+        var barBtnTitle : String;
+        if let spending = targetSpending,
+            let date = spending.date,
+            let value = spending.value,
+            let index = Util.spendingTypes.indexOf({ (spt) -> Bool in
+                return spt.id == spending.spendingTypeId;
+            }){
+                datePicker.date = date;
+                amountTextField.text = "\(value)";
+                
+                typePicker.selectRow(index, inComponent: 0, animated: false);
+                self.pickerView(typePicker, didSelectRow: index, inComponent: 0);
+                
+                self.textViewShouldBeginEditing(noteTextView);
+                noteTextView.text = spending.note;
+                self.textViewDidEndEditing(noteTextView);
+                
+                _mode = .Editing;
+                barBtnTitle = "Update";
+        } else {
+            _mode = .Adding;
+            barBtnTitle = "Add";
+        }
+        
         self.navigationItem.title = "Add Spending";
         self.datePickerValueChanged(datePicker);
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Done, target: self, action: "onDone");
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: barBtnTitle, style: .Done, target: self, action: "onDone");
         self.navigationItem.rightBarButtonItem?.enabled = false;
         
         _validator.register(amountTextField, withName: "value", forRules: RequiredRule());
         _validator.register(typeTextField, withName: "spending_type", forRules: RequiredRule());
+        
+        validateForm();
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,21 +196,21 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         let targetCell = cellArrangement.order[indexPath.row];
         switch targetCell {
         case dateCell:
-            _editMode = .Date;
+            _editingField = .Date;
         case typeCell:
-            _editMode = .Type;
+            _editingField = .Type;
         case amountCell:
-            _editMode = .Amount;
+            _editingField = .Amount;
         case noteCell:
-            _editMode = .Note;
+            _editingField = .Note;
         default:
-            _editMode = .None;
+            _editingField = .None;
         }
         return nil;
     }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        _editMode = .None;
+        _editingField = .None;
     }
     
     // MARK: - Text Field Delegate
@@ -188,12 +222,12 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        _editMode = .Amount;
+        _editingField = .Amount;
         return true;
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        _editMode = .Note;
+        _editingField = .Note;
         if _noteContent == nil || _noteContent!.isEmpty {
             noteTextView.text = "";
             noteTextView.textColor = UIColor.blackColor();
@@ -242,5 +276,16 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         }
         let spendingType = Util.spendingTypes[row - 1];
         return spendingType.name;
+    }
+    
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            typeTextField.text = "";
+        } else {
+            let option = Util.spendingTypes[row - 1];
+            typeTextField.text = option.name;
+        }
+        validateForm();
     }
 }

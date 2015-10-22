@@ -252,6 +252,7 @@
                         <outlet property="typePickerCell" destination="hjo-MP-Clh" id="0N0-dj-UwC"/>
                         <outlet property="typeTextField" destination="MdW-S7-nRs" id="nje-Eg-IS6"/>
                         <segue destination="bsa-Em-apP" kind="unwind" identifier="add_and_back_to_list" unwindAction="addedSpendingAndBack:" id="VY4-0Q-74O"/>
+                        <segue destination="bsa-Em-apP" kind="unwind" identifier="edited_and_back_to_list" unwindAction="editedSpendingAndBack:" id="Z3D-xh-RSn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPh-TV-8sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
