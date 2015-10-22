@@ -89,8 +89,18 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil);
-        cell.textLabel!.text = "hello";
+        var cell : UITableViewCell! = tableView.dequeueReusableCellWithIdentifier("spending_cell");
+        if cell == nil {
+            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "spending_cell");
+        }
+        let date = _sortedSpendingDates[indexPath.section];
+        if let sp = _tmpSpendings[date]?[indexPath.row] {
+            let note = (sp.note != nil ? ": \(sp.note!)" : "");
+            let spt = Util.spendingTypesDict[sp.spendingTypeId!];
+            
+            cell.textLabel!.text = "\(sp.value!)";
+            cell.detailTextLabel!.text = "\(spt!.name!)\(note)";
+        }
        
         return cell;
     }

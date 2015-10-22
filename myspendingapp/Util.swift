@@ -81,7 +81,16 @@ extension Manager {
 class Util {
     private static let KEY_CHAIN_KEY = "log-in-info"
     
-    static var spendingTypes : [SpendingType]!;
+    static var spendingTypes : [SpendingType]! {
+        didSet {
+            spendingTypesDict = [Int : SpendingType]();
+            for spt in spendingTypes {
+                spendingTypesDict[spt.id!] = spt;
+            }
+        }
+    }
+    
+    static var spendingTypesDict : [Int : SpendingType]!;
     
     static func setLoginInfo(obj : LogInInfo) -> Bool{
         return KeychainWrapper.setObject(obj, forKey: KEY_CHAIN_KEY);

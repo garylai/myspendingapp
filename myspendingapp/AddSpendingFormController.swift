@@ -111,6 +111,8 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func onDone() {
+        _editMode = .None;
+        
         let calendar = NSCalendar.currentCalendar();
         calendar.timeZone = NSTimeZone(forSecondsFromGMT: 0);
         let compenents = calendar.components([.Month, .Day, .Year], fromDate: datePicker.date);
@@ -120,6 +122,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         createdSpending!.value = Float(amountTextField.text!);
         createdSpending!.date = calendar.dateFromComponents(compenents);
         createdSpending!.note = _noteContent;
+        
         self.performSegueWithIdentifier("add_and_back_to_list", sender: self);
     }
     
