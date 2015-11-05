@@ -176,8 +176,9 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: barBtnTitle, style: .Done, target: self, action: "onDone");
         self.navigationItem.rightBarButtonItem?.enabled = false;
         
-        _validator.register(amountTextField, withName: "value", forRules: RequiredRule());
-        _validator.register(typeTextField, withName: "spending_type", forRules: RequiredRule());
+        _validator.makeSure(amountTextField, IsPresent());
+        _validator.makeSure(typeTextField, IsPresent());
+        _validator.makeSure(noteTextView, IsShorterThan(100));
         
         validateForm();
     }

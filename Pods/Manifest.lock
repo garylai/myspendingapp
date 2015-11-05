@@ -5,12 +5,16 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
-  - MSAValidator (~> 0.1.0)
+  - MSAValidator (from `~/Desktop/swift/MSAValidator`)
   - ObjectMapper (~> 0.19)
+
+EXTERNAL SOURCES:
+  MSAValidator:
+    :path: "~/Desktop/swift/MSAValidator"
 
 SPEC CHECKSUMS:
   Alamofire: b61782387f81bcc538a0284cf2bb5d7995cd0a80
-  MSAValidator: 206f61cc965ccbde6a857604acd4c91cadda8393
+  MSAValidator: c1ba34852770e672df8c30596097eb1fecb8aaa8
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
 
 COCOAPODS: 0.38.2

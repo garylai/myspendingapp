@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 ## MSAValidator
 
-Copyright (c) 2015 GaryLai <cppgla@cathaypacific.com>
+Copyright (c) 2015 GaryLai <garylaiph@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

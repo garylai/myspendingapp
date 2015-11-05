@@ -1,0 +1,25 @@
+{
+  "name": "MSAValidator",
+  "version": "0.1.0",
+  "summary": "Input fields velidator for MSA",
+  "description": "Input fields velidator for MSA.",
+  "homepage": "https://garylaiph@bitbucket.org/garylaiph/msavalidator",
+  "license": "MIT",
+  "authors": {
+    "GaryLai": "garylaiph@gmail.com"
+  },
+  "source": {
+    "git": "https://garylaiph@bitbucket.org/garylaiph/msavalidator.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "MSAValidator": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

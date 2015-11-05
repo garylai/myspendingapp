@@ -77,7 +77,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let (isValid, url, parameters) : (Bool, String, [String : String]) = {
             var url : String!;
             
-            var (validFields, invalidFields, params) = _loginValidator.validate();
+            var (validFields, invalidFields) = _loginValidator.validate();
+            var params = ["email": _emailTextField.text!, "password": _passwordTextField.text!]
             
             switch _mode {
             case .Register:
@@ -85,7 +86,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let registerValidationResult = _registerValidator.validate();
                 validFields.appendContentsOf(registerValidationResult.valid);
                 invalidFields.merge(registerValidationResult.invalid);
-                params.merge(registerValidationResult.params);
+                params.merge(["first_name": _firstNameTextField.text!, "last_name": _lastNameTextField.text!]);
             case .Login:
                 url = "user/token";
             }
@@ -191,12 +192,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+            
+        _loginValidator.makeSure(_emailTextField, IsPresent(), IsAnEmail());
+        _loginValidator.makeSure(_passwordTextField, IsPresent());
         
-        _loginValidator.register(_emailTextField, withName: "email", forRules: RequiredRule(), EmailRule());
-        _loginValidator.register(_passwordTextField, withName: "password", forRules: RequiredRule());
-        
-        _registerValidator.register(_firstNameTextField, withName: "first_name", forRules: RequiredRule());
-        _registerValidator.register(_lastNameTextField, withName: "last_name", forRules: RequiredRule());
+        _registerValidator.makeSure(_firstNameTextField, IsPresent());
+        _registerValidator.makeSure(_lastNameTextField, IsPresent());
         
         _logInTextFields.appendContentsOf([_emailTextField, _passwordTextField]);
         _registerTextFields.appendContentsOf([_firstNameTextField, _lastNameTextField, _emailTextField, _passwordTextField]);

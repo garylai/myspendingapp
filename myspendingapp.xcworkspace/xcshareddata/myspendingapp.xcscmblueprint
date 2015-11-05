@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "88DB361A8B6C24688E854F22A3678E2282A08580",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A3F3C3FC80F2E18A2D28A79FCDF75C02446EAEC1" : 0,
+    "88DB361A8B6C24688E854F22A3678E2282A08580" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EBC7E75A-870D-4EF0-B59F-841319E59410",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A3F3C3FC80F2E18A2D28A79FCDF75C02446EAEC1" : "MSAValidator\/",
+    "88DB361A8B6C24688E854F22A3678E2282A08580" : "myspendingapp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "myspendingapp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "myspendingapp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/garylaiph\/myspendingapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "88DB361A8B6C24688E854F22A3678E2282A08580"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/garylaiph\/msavalidator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A3F3C3FC80F2E18A2D28A79FCDF75C02446EAEC1"
+    }
+  ]
+}
