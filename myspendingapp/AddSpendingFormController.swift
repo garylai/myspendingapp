@@ -134,7 +134,16 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func validateForm() {
-        self.navigationItem.rightBarButtonItem?.enabled = _validator.validate().invalid.count == 0;
+        let validationResult = _validator.validate();
+        self.navigationItem.rightBarButtonItem?.enabled = validationResult.invalid.count == 0;
+        for e in validationResult.invalid {
+            switch e.0.dynamicType {
+                
+            }
+        }
+        for e in validationResult.valid {
+            
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -177,7 +186,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         self.navigationItem.rightBarButtonItem?.enabled = false;
         
         _validator.makeSure(amountTextField, IsPresent());
-        _validator.makeSure(typeTextField, IsPresent());
+        _validator.makeSure(typePicker, Component(0, IsInRange: 1...Util.spendingTypes.count));
         _validator.makeSure(noteTextView, IsShorterThan(100));
         
         validateForm();
@@ -186,32 +195,6 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let heights = cellArrangement.height;
-        return heights[indexPath.row];
-    }
-    
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let targetCell = cellArrangement.order[indexPath.row];
-        switch targetCell {
-        case dateCell:
-            _editingField = .Date;
-        case typeCell:
-            _editingField = .Type;
-        case amountCell:
-            _editingField = .Amount;
-        case noteCell:
-            _editingField = .Note;
-        default:
-            _editingField = .None;
-        }
-        return nil;
-    }
-    
-    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        _editingField = .None;
     }
     
     // MARK: - Text Field Delegate
@@ -257,7 +240,37 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source & delegate
+    
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let heights = cellArrangement.height;
+        return heights[indexPath.row];
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let targetCell = cellArrangement.order[indexPath.row];
+        let targetEditingField : EditingField;
+        switch targetCell {
+        case dateCell:
+            targetEditingField = .Date;
+        case typeCell:
+            targetEditingField = .Type;
+        case amountCell:
+            targetEditingField = .Amount;
+        case noteCell:
+            targetEditingField = .Note;
+        default:
+            targetEditingField = .None;
+        }
+        
+        _editingField = targetEditingField == _editingField ? .None : targetEditingField;
+        return nil;
+    }
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        _editingField = .None;
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

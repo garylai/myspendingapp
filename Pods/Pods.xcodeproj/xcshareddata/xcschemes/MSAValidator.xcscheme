@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "427DA28C865BB68936BA3209"
+               BlueprintIdentifier = "D0E71C17D0961CD2CF4CC4C8"
                BuildableName = "MSAValidator.framework"
                BlueprintName = "MSAValidator"
                ReferencedContainer = "container:Pods.xcodeproj">
