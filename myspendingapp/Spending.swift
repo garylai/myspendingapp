@@ -34,7 +34,7 @@ class Spending : ModelBase {
         userId <- map["user_id"];
         spendingTypeId <- map["spending_type_id"];
         value <- map["value"];
-        date <- map["spending_date"];
+        date <- (map["date_of_spending"], CustomDateFormatTransform(formatString: "dd-MM-yyyy"));
     }
     
     override func validateMapping() -> Bool {
