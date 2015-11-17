@@ -43,6 +43,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     private var _noteContent : String!;
     
     var targetSpending : Spending?;
+    var targetDate: NSDate?;
     
     private var _mode : Mode?;
     
@@ -167,6 +168,10 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
                 
                 _mode = .Editing;
                 barBtnTitle = "Update";
+        } else if let date = targetDate {
+            datePicker.date = date;
+            _mode = .Adding;
+            barBtnTitle = "Add";
         } else {
             _mode = .Adding;
             barBtnTitle = "Add";

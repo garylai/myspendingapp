@@ -30,8 +30,12 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         performSegueWithIdentifier("edit_existing", sender: spending);
     }
     
-    func goToAdd(){
-        performSegueWithIdentifier("add_new", sender: self);
+    func goToAdd(sender: AnyObject? = nil){
+        if let btn = sender as? UIButton where btn.tag > -1 {
+            performSegueWithIdentifier("add_new", sender: _sortedSpendingDates[btn.tag]);
+        } else {
+            performSegueWithIdentifier("add_new", sender: nil);
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -39,6 +43,10 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         if segue.identifier == "edit_existing" {
             if let destination = segue.destinationViewController as? AddSpendingFormController {
                 destination.targetSpending = sender as? Spending;
+            }
+        } else if segue.identifier == "add_new" {
+            if let destination = segue.destinationViewController as? AddSpendingFormController {
+                destination.targetDate = sender as? NSDate;
             }
         }
     }
@@ -156,7 +164,8 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         guard section < _tmpSpendings.keys.count else {
             let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("button_based") as! TableViewButtonView;
             footer.button.setTitle("add spending", forState: .Normal);
-            footer.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+            footer.button.tag = -1;
+            footer.button.addTarget(self, action: Selector("goToAdd:"), forControlEvents: .TouchUpInside);
             
             return footer;
         }
@@ -175,7 +184,8 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         
         let dateString = _dateFormatter.stringFromDate(_sortedSpendingDates[section]);
         view.button.setTitle("add more for \(dateString)", forState: .Normal);
-        view.button.addTarget(self, action: Selector("goToAdd"), forControlEvents: .TouchUpInside);
+        view.button.tag = section;
+        view.button.addTarget(self, action: Selector("goToAdd:"), forControlEvents: .TouchUpInside);
         
         return view;
     }
