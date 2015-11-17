@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="52K-ju-ttc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="52K-ju-ttc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,14 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-zh-MeJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-zh-MeJ">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="SU8-ma-tOC"/>
                                 </constraints>
                                 <state key="normal" title="Confirm"/>
                                 <connections>
-                                    <action selector="onClickAdd:" destination="XXt-sN-GIe" eventType="touchUpInside" id="bbo-To-OYN"/>
+                                    <action selector="onConfirmAdd:" destination="XXt-sN-GIe" eventType="touchUpInside" id="UF6-wb-gLr"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bJm-Z1-uPP">
@@ -49,6 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vw7-lD-uU1"/>
                     <connections>
+                        <outlet property="confirmBtn" destination="IbK-zh-MeJ" id="JSf-ug-anZ"/>
                         <outlet property="tableView" destination="bJm-Z1-uPP" id="qEt-nI-Vhp"/>
                         <segue destination="aMN-kz-nfs" kind="show" identifier="add_new" id="rrF-gr-Idz"/>
                         <segue destination="aMN-kz-nfs" kind="show" identifier="edit_existing" id="BuG-tW-HZa"/>
@@ -280,6 +282,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BuG-tW-HZa"/>
+        <segue reference="rrF-gr-Idz"/>
     </inferredMetricsTieBreakers>
 </document>

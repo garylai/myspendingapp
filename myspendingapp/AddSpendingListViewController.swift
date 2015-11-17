@@ -14,6 +14,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     private let _dateFormatter : NSDateFormatter;
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var confirmBtn: UIButton!
     
     var addedOrUpdatedSpending : Spending?;
     
@@ -60,6 +61,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         tableView.registerNib(UINib.init(nibName: "TableViewButtonView", bundle: nil),
             forHeaderFooterViewReuseIdentifier: "button_based");
         
+        setupConfirmBtn();
         goToAdd();
     }
     
@@ -67,6 +69,10 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         return Array(_tmpSpendings.keys).sort({ (aDate, bDate) -> Bool in
             return aDate.compare(bDate) == .OrderedDescending;
         })
+    }
+    
+    @IBAction func onConfirmAdd(sender: AnyObject) {
+        print("confirm!");
     }
     
     @IBAction func editedSpendingAndBack(segue: UIStoryboardSegue) {
@@ -95,6 +101,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
                     originalSpending.note = updatedSpending.note;
                 }
                 tableView.reloadData();
+                setupConfirmBtn();
         }
     }
     
@@ -107,6 +114,11 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
             _tmpSpendings[createdSpending.date!]!.append(createdSpending);
         }
         tableView.reloadData();
+        setupConfirmBtn();
+    }
+    
+    func setupConfirmBtn() {
+        confirmBtn.enabled = _tmpSpendings.count > 0;
     }
 
     override func didReceiveMemoryWarning() {
@@ -204,6 +216,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left);
                 }
             }
+            self.setupConfirmBtn();
         }
         return [deleteRow];
     }
