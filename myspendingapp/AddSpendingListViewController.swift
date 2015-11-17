@@ -21,7 +21,8 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         _tmpSpendings = [NSDate: [Spending]]();
         _sortedSpendingDates = [NSDate]();
         _dateFormatter = NSDateFormatter();
-        _dateFormatter.dateFormat = "dd-MM-yyyy";
+        _dateFormatter.locale = NSLocale(localeIdentifier: "en");
+        _dateFormatter.dateFormat = "dd-MMM-yyyy";
         super.init(coder: aDecoder);
     }
     
