@@ -10,6 +10,8 @@ import Foundation
 import ObjectMapper
 
 class Spending : ModelBase {
+    static let NOTE_MAX_LENGTH: Int = 100;
+    
     var id : String?;
     var userId: String?;
     var spendingTypeId : Int?;

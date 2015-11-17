@@ -74,16 +74,17 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
             }
             switch _editingField {
             case .Date:
-                dateTextField.textColor = UIColor.redColor();
+                dateTextField.textColor = self.view.tintColor;
                 tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(datePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
             case .Type:
-                typeTextField.textColor = UIColor.redColor();
+                typeTextField.textColor = self.view.tintColor;
                 tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.cellArrangement.order.indexOf(typePickerCell)!, inSection: 0)], withRowAnimation: .Fade);
             case .Amount:
                 amountTextField.becomeFirstResponder();
             default: ()
             }
             tableView.endUpdates();
+            validateForm();
         }
     }
     
@@ -134,16 +135,8 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func validateForm() {
-        let validationResult = _validator.validate();
-        self.navigationItem.rightBarButtonItem?.enabled = validationResult.invalid.count == 0;
-        for e in validationResult.invalid {
-            switch e.0.dynamicType {
-                
-            }
-        }
-        for e in validationResult.valid {
-            
-        }
+        let (_, invalidFields) = _validator.validate();
+        self.navigationItem.rightBarButtonItem?.enabled = invalidFields.count == 0;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -187,7 +180,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         
         _validator.makeSure(amountTextField, IsPresent());
         _validator.makeSure(typePicker, Component(0, IsInRange: 1...Util.spendingTypes.count));
-        _validator.makeSure(noteTextView, IsShorterThan(100));
+        _validator.makeSure(noteTextView, IsShorterThan(Spending.NOTE_MAX_LENGTH));
         
         validateForm();
     }
@@ -221,6 +214,19 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         _editingField = .Amount;
         return true;
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if let newText = (textView.text as NSString?)?.stringByReplacingCharactersInRange(range, withString: text){
+            if newText.characters.count > Spending.NOTE_MAX_LENGTH {
+                textView.textColor = UIColor.redColor();
+            } else {
+                textView.textColor = UIColor.blackColor();
+            }
+            textView.text = newText;
+            validateForm();
+        }
+        return false;
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
