@@ -113,7 +113,6 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         _editingField = .None;
         
         let calendar = NSCalendar.currentCalendar();
-        calendar.timeZone = NSTimeZone(forSecondsFromGMT: 0);
         let compenents = calendar.components([.Month, .Day, .Year], fromDate: datePicker.date);
         
         let resultSpending = Spending();
