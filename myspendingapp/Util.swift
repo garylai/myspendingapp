@@ -16,6 +16,18 @@ enum APIError {
     case SystemReturned(ErrorType?)
 }
 
+protocol EasyRequest {
+    func requestWithCallbacks (
+        method: Alamofire.Method,
+        _ relativePath: String,
+        parameters: [String: AnyObject]?,
+        encoding: Alamofire.ParameterEncoding,
+        headers: [String: String]?,
+        successCallback: ((AnyObject?) -> Void)?,
+        failedCallback: ((APIError?, String?) -> Void)?,
+        completedCallback: (() -> Void)?) -> Alamofire.Request;
+}
+
 // Dummy class to make the error as NSError works in AppDelegate
 // Compiler magic not working without this class
 private class Dummy {
@@ -27,7 +39,7 @@ private class Dummy {
     }
 }
 
-extension Manager {
+extension Manager : EasyRequest {
     func requestWithCallbacks (
         method: Alamofire.Method,
         _ relativePath: String,
@@ -104,7 +116,7 @@ class Util {
         return KeychainWrapper.removeObjectForKey(KEY_CHAIN_KEY);
     }
     
-    static let alamofireManager : Manager = { 
+    static let alamofireManager : EasyRequest = { 
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
 //        configuration.timeoutIntervalForRequest = 20 // seconds
 //        configuration.timeoutIntervalForResource = 20

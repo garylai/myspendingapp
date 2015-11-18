@@ -1,12 +1,16 @@
 PODS:
   - Alamofire (3.0.0)
   - MSAValidator (0.1.0)
+  - Nimble (3.0.0)
   - ObjectMapper (0.19)
+  - Quick (0.8.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - MSAValidator (from `~/Desktop/swift/MSAValidator`)
+  - Nimble (= 3.0.0)
   - ObjectMapper (~> 0.19)
+  - Quick (~> 0.8.0)
 
 EXTERNAL SOURCES:
   MSAValidator:
@@ -15,6 +19,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: b61782387f81bcc538a0284cf2bb5d7995cd0a80
   MSAValidator: c1ba34852770e672df8c30596097eb1fecb8aaa8
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
 
 COCOAPODS: 0.38.2

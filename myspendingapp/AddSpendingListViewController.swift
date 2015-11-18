@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
 class AddSpendingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var _tmpSpendings : [NSDate: [Spending]]!;
@@ -72,7 +74,12 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func onConfirmAdd(sender: AnyObject) {
-        print("confirm!");
+        let helper = SpendingSavingHelper(spendingDict: _tmpSpendings, dateOrder: _sortedSpendingDates);
+        Util.mainController.showActivityIndicator = true;
+        helper?.startSaving({ (results : [[Bool]]) -> Void in
+            print(results);
+            Util.mainController.showActivityIndicator = false;
+        })
     }
     
     @IBAction func editedSpendingAndBack(segue: UIStoryboardSegue) {

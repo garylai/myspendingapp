@@ -108,6 +108,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Util.alamofireManager.requestWithCallbacks(.POST, url,
                 parameters: parameters,
                 encoding: .JSON,
+                headers: nil,
                 successCallback: { (json) -> Void in
                     if let loginInfo = Mapper<LogInInfo>().map(json) where loginInfo.mappingValid! {
                         print(loginInfo);

@@ -7,34 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050EAAF0E7381D078753D778 /* Pods_myspendingappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; settings = {ASSET_TAGS = (); }; };
-		FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FC112D831BCE357F00E0BDE3 /* AddSpendingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FC112D851BCE485D00E0BDE3 /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D841BCE485D00E0BDE3 /* SpendingType.swift */; settings = {ASSET_TAGS = (); }; };
-		FC112D871BCE48AE00E0BDE3 /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D861BCE48AE00E0BDE3 /* Spending.swift */; settings = {ASSET_TAGS = (); }; };
-		FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8A1BCE50BB00E0BDE3 /* TableViewTextView.xib */; settings = {ASSET_TAGS = (); }; };
-		FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		FC112D8F1BCE53C000E0BDE3 /* TableViewButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */; settings = {ASSET_TAGS = (); }; };
-		FC112D911BCE53F700E0BDE3 /* TableViewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */; settings = {ASSET_TAGS = (); }; };
-		FC14B7991BD4C3A40076DD29 /* spending_types.json in Resources */ = {isa = PBXBuildFile; fileRef = FC14B7981BD4C3A40076DD29 /* spending_types.json */; settings = {ASSET_TAGS = (); }; };
+		FC047E751BFC766F0012BC09 /* SpendingSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC047E741BFC766F0012BC09 /* SpendingSavingHelper.swift */; };
+		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; };
+		FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */; };
+		FC112D831BCE357F00E0BDE3 /* AddSpendingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */; };
+		FC112D851BCE485D00E0BDE3 /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D841BCE485D00E0BDE3 /* SpendingType.swift */; };
+		FC112D871BCE48AE00E0BDE3 /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D861BCE48AE00E0BDE3 /* Spending.swift */; };
+		FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8A1BCE50BB00E0BDE3 /* TableViewTextView.xib */; };
+		FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */; };
+		FC112D8F1BCE53C000E0BDE3 /* TableViewButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */; };
+		FC112D911BCE53F700E0BDE3 /* TableViewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */; };
+		FC14B7991BD4C3A40076DD29 /* spending_types.json in Resources */ = {isa = PBXBuildFile; fileRef = FC14B7981BD4C3A40076DD29 /* spending_types.json */; };
 		FC14B79B1BD4C3C20076DD29 /* spending_types.json in Resources */ = {isa = PBXBuildFile; fileRef = FC14B7981BD4C3A40076DD29 /* spending_types.json */; };
-		FC14B7A61BD4E8B60076DD29 /* AddSpendingFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14B7A41BD4E8B60076DD29 /* AddSpendingFormController.swift */; settings = {ASSET_TAGS = (); }; };
+		FC14B7A61BD4E8B60076DD29 /* AddSpendingFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14B7A41BD4E8B60076DD29 /* AddSpendingFormController.swift */; };
 		FC49419C1BB3D17400C6349D /* MSATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419B1BB3D17400C6349D /* MSATextField.swift */; };
 		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
-		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; settings = {ASSET_TAGS = (); }; };
-		FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC78EB8B1BC0C19F005E39FC /* Environment.swift */; settings = {ASSET_TAGS = (); }; };
-		FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9D5CBB1BC37898004BEE27 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */; settings = {ASSET_TAGS = (); }; };
-		FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */; settings = {ASSET_TAGS = (); }; };
+		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; };
+		FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC78EB8B1BC0C19F005E39FC /* Environment.swift */; };
+		FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9D5CBB1BC37898004BEE27 /* Main.storyboard */; };
+		FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */; };
+		FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */; };
+		FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
 		FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2C1BABC6F7008A716B /* LoginViewController.swift */; };
 		FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE2E1BABC6F7008A716B /* Login.storyboard */; };
 		FCE8DE331BABC6F7008A716B /* myspendingapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE311BABC6F7008A716B /* myspendingapp.xcdatamodeld */; };
 		FCE8DE351BABC6F7008A716B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE341BABC6F7008A716B /* Assets.xcassets */; };
 		FCE8DE381BABC6F7008A716B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE8DE361BABC6F7008A716B /* LaunchScreen.storyboard */; };
-		FCE8DE431BABC6F7008A716B /* myspendingappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE421BABC6F7008A716B /* myspendingappTests.swift */; };
+		FCE8DE431BABC6F7008A716B /* SpendingSavingHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE421BABC6F7008A716B /* SpendingSavingHelperTests.swift */; };
 		FCE8DE4E1BABC6F7008A716B /* myspendingappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE4D1BABC6F7008A716B /* myspendingappUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +59,12 @@
 
 /* Begin PBXFileReference section */
 		04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.debug.xcconfig"; sourceTree = "<group>"; };
+		35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myspendingappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myspendingapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E24770ED8A9DED68572F2AF /* Pods-myspendingappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingappTests/Pods-myspendingappTests.release.xcconfig"; sourceTree = "<group>"; };
+		B4D7A82479687F68AA21B40A /* Pods-myspendingappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingappTests/Pods-myspendingappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myspendingapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp.release.xcconfig"; sourceTree = "<group>"; };
+		FC047E741BFC766F0012BC09 /* SpendingSavingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingSavingHelper.swift; sourceTree = "<group>"; };
 		FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
 		FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddSpending.storyboard; sourceTree = "<group>"; };
 		FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendingListViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +93,7 @@
 		FCE8DE371BABC6F7008A716B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCE8DE391BABC6F7008A716B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCE8DE3E1BABC6F7008A716B /* myspendingappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myspendingappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCE8DE421BABC6F7008A716B /* myspendingappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myspendingappTests.swift; sourceTree = "<group>"; };
+		FCE8DE421BABC6F7008A716B /* SpendingSavingHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingSavingHelperTests.swift; sourceTree = "<group>"; };
 		FCE8DE441BABC6F7008A716B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCE8DE491BABC6F7008A716B /* myspendingappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myspendingappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE8DE4D1BABC6F7008A716B /* myspendingappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myspendingappUITests.swift; sourceTree = "<group>"; };
@@ -107,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050EAAF0E7381D078753D778 /* Pods_myspendingappTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */,
+				35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,6 +141,8 @@
 			children = (
 				04ED34183B6E61C47930A6DC /* Pods-myspendingapp.debug.xcconfig */,
 				CCA08B127C6B68B75DC7E166 /* Pods-myspendingapp.release.xcconfig */,
+				B4D7A82479687F68AA21B40A /* Pods-myspendingappTests.debug.xcconfig */,
+				8E24770ED8A9DED68572F2AF /* Pods-myspendingappTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -177,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */,
+				FC047E741BFC766F0012BC09 /* SpendingSavingHelper.swift */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -235,7 +246,7 @@
 		FCE8DE411BABC6F7008A716B /* myspendingappTests */ = {
 			isa = PBXGroup;
 			children = (
-				FCE8DE421BABC6F7008A716B /* myspendingappTests.swift */,
+				FCE8DE421BABC6F7008A716B /* SpendingSavingHelperTests.swift */,
 				FCE8DE441BABC6F7008A716B /* Info.plist */,
 			);
 			path = myspendingappTests;
@@ -277,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCE8DE551BABC6F7008A716B /* Build configuration list for PBXNativeTarget "myspendingappTests" */;
 			buildPhases = (
+				61768CC786EADB7D7ED67E58 /* Check Pods Manifest.lock */,
 				FCE8DE3A1BABC6F7008A716B /* Sources */,
 				FCE8DE3B1BABC6F7008A716B /* Frameworks */,
 				FCE8DE3C1BABC6F7008A716B /* Resources */,
+				F81C0A204176411556171715 /* Embed Pods Frameworks */,
+				BB9ED01F050569A760A49F2C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,6 +430,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		61768CC786EADB7D7ED67E58 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		7E5FA6BACE7041261DD997AE /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,6 +460,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myspendingapp/Pods-myspendingapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BB9ED01F050569A760A49F2C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myspendingappTests/Pods-myspendingappTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F81C0A204176411556171715 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myspendingappTests/Pods-myspendingappTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -441,6 +500,7 @@
 				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
 				FC14B7A61BD4E8B60076DD29 /* AddSpendingFormController.swift in Sources */,
 				FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */,
+				FC047E751BFC766F0012BC09 /* SpendingSavingHelper.swift in Sources */,
 				FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */,
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
@@ -462,7 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE8DE431BABC6F7008A716B /* myspendingappTests.swift in Sources */,
+				FCE8DE431BABC6F7008A716B /* SpendingSavingHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +686,7 @@
 		};
 		FCE8DE561BABC6F7008A716B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4D7A82479687F68AA21B40A /* Pods-myspendingappTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = myspendingappTests/Info.plist;
@@ -638,6 +699,7 @@
 		};
 		FCE8DE571BABC6F7008A716B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E24770ED8A9DED68572F2AF /* Pods-myspendingappTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = myspendingappTests/Info.plist;
