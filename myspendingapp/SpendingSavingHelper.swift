@@ -65,12 +65,12 @@ internal class SpendingSavingHelper {
         let spending = _currentSpendings[_currentSpendingIndex];
         let dict = Mapper().toJSON(spending);
         print(dict);
-        _requestmanager.requestWithCallbacks(
-            .POST,
+        //        _requestmanager.requestWithCallbacks(
+        Util.makeRequest(
+            "POST",
             "spending",
             parameters: Mapper().toJSON(spending),
-            encoding: .JSON,
-            headers: nil,
+            customHeaders: nil,
             successCallback: { (_) -> Void in
                 self._results[self._currentDateIndex].append(true);
             }, failedCallback: { (_, _) -> Void in

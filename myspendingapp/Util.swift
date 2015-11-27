@@ -116,7 +116,63 @@ class Util {
         return KeychainWrapper.removeObjectForKey(KEY_CHAIN_KEY);
     }
     
-    static let alamofireManager : EasyRequest = { 
+    static func makeRequest(
+        method: String,
+        _ relativePath: String,
+        parameters: [String: AnyObject]? = nil,
+        customHeaders: [String: String]? = nil,
+        successCallback: ((AnyObject?) -> Void)? = nil,
+        failedCallback: ((APIError?, String?) -> Void)? = nil,
+        completedCallback: (() -> Void)? = nil) {
+            let url = NSURL.init(scheme: "https", host: ENV.APIDomain, path: "/api/\(ENV.APIVersion)/\(relativePath)");
+            let urlRequest = NSMutableURLRequest.init(URL: url!, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 15);
+            urlRequest.HTTPMethod = method;
+            var headers = ["Content-Type": "application/json"];
+            headers.merge(customHeaders);
+            urlRequest.allHTTPHeaderFields = headers;
+            if parameters != nil{
+                do {
+                    urlRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters!, options: []);
+                } catch let error {
+                    failedCallback?(APIError.SystemReturned(error), nil);
+                    return;
+                }
+            }
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(urlRequest) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                if data != nil {
+                   print(NSString(data: data!, encoding: NSUTF8StringEncoding));
+                }
+                print(response);
+                print(error);
+                guard error == nil else {
+                    failedCallback?(APIError.SystemReturned(error), nil);
+                    completedCallback?();
+                    return;
+                }
+                
+                assert(response != nil);
+                assert(response!.isKindOfClass(NSHTTPURLResponse));
+         
+                let httpResponse = response as! NSHTTPURLResponse;
+                var responseJson : AnyObject? = nil;
+                do {
+                    responseJson = try NSJSONSerialization.JSONObjectWithData(data!, options: []);
+                } catch let error {
+                    failedCallback?(APIError.SystemReturned(error), nil);
+                    completedCallback?();
+                    return;
+                }
+                if (200..<300).contains(httpResponse.statusCode) {
+                    successCallback?(responseJson);
+                } else {
+                    failedCallback?(APIError.ServerReturned(responseJson), nil);
+                }
+                completedCallback?();
+            }
+        task.resume();
+    }
+
+    static let alamofireManager : EasyRequest = {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
 //        configuration.timeoutIntervalForRequest = 20 // seconds
 //        configuration.timeoutIntervalForResource = 20
@@ -145,8 +201,11 @@ class Util {
 
 
 extension Dictionary {
-    mutating func merge(dict: [Key: Value]){
-        for (k, v) in dict {
+    mutating func merge(dict: [Key: Value]?){
+        guard dict != nil else {
+            return;
+        }
+        for (k, v) in dict! {
             self.updateValue(v, forKey: k);
         }
     }
