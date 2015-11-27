@@ -22,6 +22,7 @@ internal class SpendingSavingHelper {
     
     private var _saving : Bool = false;
     private let _lock : NSLock = NSLock();
+    private var _token : String!;
     
     init?(spendingDict: [NSDate : [Spending]],
             dateOrder: [NSDate],
@@ -51,8 +52,10 @@ internal class SpendingSavingHelper {
             _currentSpendingIndex = -1;
             _currentDateIndex++;
             print("trying to go to the next day");
-            if _currentDateIndex > _dateOrder.count - 1{
-                print("all done");
+            if _currentDateIndex > _dateOrder.count - 1 {
+                self._lock.lock();
+                self._saving = false;
+                self._lock.unlock();
                 dispatch_async(dispatch_get_main_queue(), {
                     self._completeCallback!(self._results);
                 })
@@ -70,7 +73,7 @@ internal class SpendingSavingHelper {
             "POST",
             "spending",
             parameters: Mapper().toJSON(spending),
-            customHeaders: nil,
+            customHeaders: ["Authorization": "Token token=\(_token!)"],
             successCallback: { (_) -> Void in
                 self._results[self._currentDateIndex].append(true);
             }, failedCallback: { (_, _) -> Void in
@@ -85,6 +88,11 @@ internal class SpendingSavingHelper {
     func startSaving(completeCallback : ([[Bool]] -> Void)) -> Bool {
         _lock.lock();
         guard !_saving else {
+            _lock.unlock();
+            return false;
+        }
+        _token = Util.getLoginInfo()?.token;
+        guard _token != nil else {
             _lock.unlock();
             return false;
         }

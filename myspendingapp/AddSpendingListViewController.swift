@@ -78,6 +78,22 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         Util.mainController.showActivityIndicator = true;
         helper?.startSaving({ (results : [[Bool]]) -> Void in
             print(results);
+            for var i = 0; i < results.count; i++ {
+                let date = self._sortedSpendingDates[i];
+                var spendings = self._tmpSpendings[date];
+                let resultOfTheDay = results[i];
+                for var j = resultOfTheDay.count - 1; j > -1; j-- {
+                    if resultOfTheDay[j] {
+                        spendings?.removeAtIndex(j);
+                    }
+                }
+                if spendings?.count > 0 {
+                    self._tmpSpendings[date] = spendings;
+                } else {
+                    self._tmpSpendings.removeValueForKey(date);
+                }
+            }
+            self.tableView?.reloadData();
             Util.mainController.showActivityIndicator = false;
         })
     }

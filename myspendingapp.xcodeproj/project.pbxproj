@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		050EAAF0E7381D078753D778 /* Pods_myspendingappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		050EAAF0E7381D078753D778 /* Pods_myspendingappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */; };
+		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; };
 		FC047E751BFC766F0012BC09 /* SpendingSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC047E741BFC766F0012BC09 /* SpendingSavingHelper.swift */; };
 		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; };
 		FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */; };
