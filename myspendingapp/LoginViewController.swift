@@ -104,11 +104,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if isValid {
             Util.mainController.showActivityIndicator = true;
-            
-            Util.alamofireManager.requestWithCallbacks(.POST, url,
+            Util.makeRequest(
+                "POST",
+                url,
                 parameters: parameters,
-                encoding: .JSON,
-                headers: nil,
                 successCallback: { (json) -> Void in
                     if let loginInfo = Mapper<LogInInfo>().map(json) where loginInfo.mappingValid! {
                         print(loginInfo);
@@ -117,13 +116,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         self.showErrorMessage();
                     }
-                },
-                failedCallback: { (error, message) -> Void in
+                }, failedCallback: { (error, message) -> Void in
                     self.showErrorMessage(message);
-                },
-                completedCallback: { () -> Void in
+                }, completedCallback: { () -> Void in
                     Util.mainController.showActivityIndicator = false;
-            })
+                }
+            );
         }
     }
     
