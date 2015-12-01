@@ -102,6 +102,12 @@ class Util {
         }
     }
     
+    static var nsURLSession : NSURLSession = {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration();
+        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue());
+        return session;
+    }();
+    
     static var spendingTypesDict : [Int : SpendingType]!;
     
     static func setLoginInfo(obj : LogInInfo) -> Bool{
@@ -138,7 +144,7 @@ class Util {
                     return;
                 }
             }
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(urlRequest) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            let task = nsURLSession.dataTaskWithRequest(urlRequest) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 if data != nil {
                    print(NSString(data: data!, encoding: NSUTF8StringEncoding));
                 }
