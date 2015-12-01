@@ -120,7 +120,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         if _mode == .Adding {
             targetSegueId = "add_and_back_to_list";
         }
-        resultSpending.spendingTypeId = Util.spendingTypes[typePicker.selectedRowInComponent(0) - 1].id;
+        resultSpending.spendingTypeId = Util.instance.spendingTypes[typePicker.selectedRowInComponent(0) - 1].id;
         resultSpending.value = Float(amountTextField.text!);
         resultSpending.date = calendar.dateFromComponents(compenents);
         resultSpending.note = _noteContent;
@@ -152,7 +152,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         if let spending = targetSpending,
             let date = spending.date,
             let value = spending.value,
-            let index = Util.spendingTypes.indexOf({ (spt) -> Bool in
+            let index = Util.instance.spendingTypes.indexOf({ (spt) -> Bool in
                 return spt.id == spending.spendingTypeId;
             }){
                 datePicker.date = date;
@@ -183,7 +183,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         self.navigationItem.rightBarButtonItem?.enabled = false;
         
         _validator.makeSure(amountTextField, IsPresent());
-        _validator.makeSure(typePicker, Component(0, IsInRange: 1...Util.spendingTypes.count));
+        _validator.makeSure(typePicker, Component(0, IsInRange: 1...Util.instance.spendingTypes.count));
         _validator.makeSure(noteTextView, IsShorterThan(Spending.NOTE_MAX_LENGTH));
         
         validateForm();
@@ -300,7 +300,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
     // MARK: - Picker View
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Util.spendingTypes.count + 1;
+        return Util.instance.spendingTypes.count + 1;
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -311,7 +311,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         guard row > 0 else {
             return "<Please select>";
         }
-        let spendingType = Util.spendingTypes[row - 1];
+        let spendingType = Util.instance.spendingTypes[row - 1];
         return spendingType.name;
     }
     
@@ -320,7 +320,7 @@ class AddSpendingFormController: UITableViewController, UIPickerViewDataSource, 
         if row == 0 {
             typeTextField.text = "";
         } else {
-            let option = Util.spendingTypes[row - 1];
+            let option = Util.instance.spendingTypes[row - 1];
             typeTextField.text = option.name;
         }
         validateForm();

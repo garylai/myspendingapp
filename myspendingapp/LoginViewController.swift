@@ -103,23 +103,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }();
         
         if isValid {
-            Util.mainController.showActivityIndicator = true;
-            Util.makeRequest(
+            Util.instance.mainController.showActivityIndicator = true;
+            Util.instance.makeRequest(
                 "POST",
                 url,
                 parameters: parameters,
                 successCallback: { (json) -> Void in
                     if let loginInfo = Mapper<LogInInfo>().map(json) where loginInfo.mappingValid! {
                         print(loginInfo);
-                        Util.setLoginInfo(loginInfo);
-                        Util.mainController.changeSection(to: .AddSpending);
+                        Util.instance.setLoginInfo(loginInfo);
+                        Util.instance.mainController.changeSection(to: .AddSpending);
                     } else {
                         self.showErrorMessage();
                     }
                 }, failedCallback: { (error, message) -> Void in
                     self.showErrorMessage(message);
                 }, completedCallback: { () -> Void in
-                    Util.mainController.showActivityIndicator = false;
+                    Util.instance.mainController.showActivityIndicator = false;
                 }
             );
         }

@@ -26,7 +26,7 @@ internal class SpendingSavingHelper {
     
     init?(spendingDict: [NSDate : [Spending]],
             dateOrder: [NSDate],
-        requestManager: EasyRequest = Util.alamofireManager){
+        requestManager: EasyRequest = Util.instance){
                 _requestmanager = requestManager;
                 _spendingDict = spendingDict;
                 _dateOrder = dateOrder;
@@ -69,7 +69,7 @@ internal class SpendingSavingHelper {
         let dict = Mapper().toJSON(spending);
         print(dict);
         //        _requestmanager.requestWithCallbacks(
-        Util.makeRequest(
+        Util.instance.makeRequest(
             "POST",
             "spending",
             parameters: Mapper().toJSON(spending),
@@ -91,7 +91,7 @@ internal class SpendingSavingHelper {
             _lock.unlock();
             return false;
         }
-        _token = Util.getLoginInfo()?.token;
+        _token = Util.instance.getLoginInfo()?.token;
         guard _token != nil else {
             _lock.unlock();
             return false;

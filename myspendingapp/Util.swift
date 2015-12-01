@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import CoreData
 import ObjectMapper
 
@@ -17,83 +16,31 @@ enum APIError {
 }
 
 protocol EasyRequest {
-    func requestWithCallbacks (
-        method: Alamofire.Method,
-        _ relativePath: String,
-        parameters: [String: AnyObject]?,
-        encoding: Alamofire.ParameterEncoding,
-        headers: [String: String]?,
-        successCallback: ((AnyObject?) -> Void)?,
-        failedCallback: ((APIError?, String?) -> Void)?,
-        completedCallback: (() -> Void)?) -> Alamofire.Request;
+    func makeRequest(
+    method: String,
+    _ relativePath: String,
+    parameters: [String: AnyObject]?,
+    customHeaders: [String: String]?,
+    successCallback: ((AnyObject?) -> Void)?,
+    failedCallback: ((APIError?, String?) -> Void)?,
+    completedCallback: (() -> Void)?);
 }
 
-// Dummy class to make the error as NSError works in AppDelegate
-// Compiler magic not working without this class
-private class Dummy {
-    private func foo() throws { }
-    private func bar () {
-        do {
-            try foo()
-        } catch ( _ as NSError){ }
-    }
-}
-
-extension Manager : EasyRequest {
-    func requestWithCallbacks (
-        method: Alamofire.Method,
-        _ relativePath: String,
-        parameters: [String: AnyObject]? = nil,
-        encoding: Alamofire.ParameterEncoding = .URL,
-        headers: [String: String]? = nil,
-        successCallback: ((AnyObject?) -> Void)? = nil,
-        failedCallback: ((APIError?, String?) -> Void)? = nil,
-        completedCallback: (() -> Void)? = nil)
-        -> Alamofire.Request
-    {
-        return self.request(method, "\(ENV.APIURLPrefix)/\(relativePath)",
-            parameters: parameters,
-            encoding: encoding,
-            headers: headers)
-            .responseJSON { response in
-                var message : String?
-                var error : APIError?
-                if let _ = response.result.error {
-                    print("failed with: \(response.result.error)");
-                    message = {
-                        if let err = response.result.error as? NSURLError where err == .NotConnectedToInternet {
-                            return "Cannot connect to the internet";
-                        }
-                        return nil;
-                        }();
-                    error = APIError.SystemReturned(response.result.error);
-                } else if let statusCode = response.response?.statusCode {
-                    if (200..<300).contains(statusCode) {
-                        print("succeed with : \(response.result.value)");
-                        successCallback?(response.result.value);
-                    } else {
-                        print(statusCode);
-                        print("failed with : \(response.result.value)");
-                        message = (response.result.value as? [String: [String]])?["errors"]?[0];
-                        error = APIError.ServerReturned(response.result.value);
-                    }
-                } else {
-                    failedCallback?(nil, nil);
-                }
-                
-                if error != nil {
-                    failedCallback?(error!, message);
-                }
-                print("completed");
-                completedCallback?();
+class Util : EasyRequest{
+    private static var _instance : Util!;
+    private static let KEY_CHAIN_KEY = "log-in-info"
+    var spendingTypesDict : [Int : SpendingType]!;
+    
+    static var instance : Util{
+        get {
+            if _instance == nil {
+                _instance = Util();
+            }
+            return _instance;
         }
     }
-}
-
-class Util {
-    private static let KEY_CHAIN_KEY = "log-in-info"
     
-    static var spendingTypes : [SpendingType]! {
+    var spendingTypes : [SpendingType]! {
         didSet {
             spendingTypesDict = [Int : SpendingType]();
             for spt in spendingTypes {
@@ -102,27 +49,26 @@ class Util {
         }
     }
     
-    static var nsURLSession : NSURLSession = {
+    var nsURLSession : NSURLSession = {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration();
         let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue());
         return session;
     }();
     
-    static var spendingTypesDict : [Int : SpendingType]!;
     
-    static func setLoginInfo(obj : LogInInfo) -> Bool{
-        return KeychainWrapper.setObject(obj, forKey: KEY_CHAIN_KEY);
+    func setLoginInfo(obj : LogInInfo) -> Bool{
+        return KeychainWrapper.setObject(obj, forKey: Util.KEY_CHAIN_KEY);
     }
     
-    static func getLoginInfo() -> LogInInfo? {
-        return KeychainWrapper.objectForKey(KEY_CHAIN_KEY) as? LogInInfo;
+    func getLoginInfo() -> LogInInfo? {
+        return KeychainWrapper.objectForKey(Util.KEY_CHAIN_KEY) as? LogInInfo;
     }
     
-    static func deleteLoginInfo() -> Bool {
-        return KeychainWrapper.removeObjectForKey(KEY_CHAIN_KEY);
+    func deleteLoginInfo() -> Bool {
+        return KeychainWrapper.removeObjectForKey(Util.KEY_CHAIN_KEY);
     }
     
-    static func makeRequest(
+    func makeRequest(
         method: String,
         _ relativePath: String,
         parameters: [String: AnyObject]? = nil,
@@ -177,21 +123,15 @@ class Util {
             }
         task.resume();
     }
-
-    static let alamofireManager : EasyRequest = {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//        configuration.timeoutIntervalForRequest = 20 // seconds
-//        configuration.timeoutIntervalForResource = 20
-        return Alamofire.Manager(configuration: configuration)}();
     
-    static var mainController: MainViewController {
+    var mainController: MainViewController {
         get {
             let appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate;
             return appDelegate.window!.rootViewController as! MainViewController;
         }
     }
     
-    static func loadSpendingType() -> Bool {
+    func loadSpendingType() -> Bool {
         guard let path = NSBundle.mainBundle().pathForResource("spending_types", ofType: "json") else {
             return false;
         }

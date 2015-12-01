@@ -75,7 +75,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func onConfirmAdd(sender: AnyObject) {
         let helper = SpendingSavingHelper(spendingDict: _tmpSpendings, dateOrder: _sortedSpendingDates);
-        Util.mainController.showActivityIndicator = true;
+        Util.instance.mainController.showActivityIndicator = true;
         helper?.startSaving({ (results : [[Bool]]) -> Void in
             print(results);
             for var i = 0; i < results.count; i++ {
@@ -94,7 +94,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
                 }
             }
             self.tableView?.reloadData();
-            Util.mainController.showActivityIndicator = false;
+            Util.instance.mainController.showActivityIndicator = false;
         })
     }
     
@@ -178,7 +178,7 @@ class AddSpendingListViewController: UIViewController, UITableViewDataSource, UI
         let date = _sortedSpendingDates[indexPath.section];
         if let sp = _tmpSpendings[date]?[indexPath.row] {
             let note = (sp.note != nil ? ": \(sp.note!)" : "");
-            let spt = Util.spendingTypesDict[sp.spendingTypeId!];
+            let spt = Util.instance.spendingTypesDict[sp.spendingTypeId!];
             
             cell.textLabel!.text = "\(sp.value!)";
             cell.detailTextLabel!.text = "\(spt!.name!)\(note)";

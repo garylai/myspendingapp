@@ -79,11 +79,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard Util.loadSpendingType() else {
+        guard Util.instance.loadSpendingType() else {
             exit(0);
         }
         
-        if let loginInfo = Util.getLoginInfo() {
+//        Util.deleteLoginInfo();
+        if let loginInfo = Util.instance.getLoginInfo() {
             print("has loging_info id: \(loginInfo.id)");
             print("             token: \(loginInfo.token)");
             //            Util.deleteLoginInfo();
