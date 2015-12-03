@@ -12,27 +12,46 @@ import Nimble
 import Alamofire
 @testable import myspendingapp
 
-class ManagerStub : EasyRequest {
+class LogInManagerStub : LogInInfoManager {
+    let loginInfo: LogInInfo?;
+    
+    init(loginInfo: LogInInfo?){
+        self.loginInfo = loginInfo;
+    }
+    
+    func setLoginInfo(obj : LogInInfo) -> Bool {
+        return true;
+    }
+    
+    func getLoginInfo() -> LogInInfo? {
+        return loginInfo;
+    }
+    
+    func deleteLoginInfo() -> Bool {
+        return true;
+    }
+}
+
+class ManagerStub : RequestMaker {
     private let _requestResults : [Bool];
     private var _current : Int = 0;
     init(requestResults: [Bool]) {
         _requestResults = requestResults;
     }
     
-    func requestWithCallbacks (
-        method: Alamofire.Method,
+    func makeRequest(
+        method: String,
         _ relativePath: String,
         parameters: [String: AnyObject]? = nil,
-        encoding: Alamofire.ParameterEncoding = .URL,
-        headers: [String: String]? = nil,
+        customHeaders: [String: String]? = nil,
         successCallback: ((AnyObject?) -> Void)? = nil,
         failedCallback: ((APIError?, String?) -> Void)? = nil,
         completedCallback: (() -> Void)? = nil)
-        -> Alamofire.Request {
+    {
 //            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)));
 //            dispatch_after(delay, dispatch_get_main_queue()) { () -> Void in
 //            dispatch_async(dispatch_get_main_queue()){
-                if self._requestResults[self._current++] {
+            if self._requestResults[self._current++] {
                     print("call success");
                     successCallback?(nil);
                 } else {
@@ -42,7 +61,6 @@ class ManagerStub : EasyRequest {
             print("call complete");
                 completedCallback?();
 //            }
-            return Alamofire.request(method, relativePath);
     }
 }
 
@@ -50,7 +68,9 @@ class SpendingSavingHelperTests: QuickSpec {
     override func spec() {
         describe("spending saving helper"){
             context("when saving"){
-                it("should record and retuen the result"){
+                var spendingDict: [NSDate: [Spending]]!;
+                var dateOrder: [NSDate]!;
+                beforeEach {
                     let dfParser = NSDateFormatter();
                     dfParser.dateFormat = "yyyy-MM-dd";
                     let d1 = dfParser.dateFromString("2015-11-25")!;
@@ -64,14 +84,25 @@ class SpendingSavingHelperTests: QuickSpec {
                     let s5 = Spending();
                     let s6 = Spending();
                     
-                    let spendingDict = [d1: [s1, s2], d2: [s3, s4, s5], d3: [s6]];
-                    let dateOrder = [d3, d2, d1];
-                    
+                    spendingDict = [d1: [s1, s2], d2: [s3, s4, s5], d3: [s6]];
+                    dateOrder = [d3, d2, d1];
+                }
+                context("if there is no log in info"){
+                    it("should return false"){
+                        let loginManager = LogInManagerStub(loginInfo: nil);
+                        let helper = SpendingSavingHelper(spendingDict: spendingDict, dateOrder: dateOrder, loginManager: loginManager);
+                        let status = helper?.startSaving(nil);
+                        expect(status).to(beFalse());
+                    }
+                }
+                it("should record and retuen the result"){
+                    let loginInfo = LogInInfo(id: "id", token: "token");
+                    let loginManager = LogInManagerStub(loginInfo: loginInfo);
                     let managerStub = ManagerStub(requestResults: [true, false, true, true, true, false]);
-                    let helper = SpendingSavingHelper(spendingDict: spendingDict, dateOrder: dateOrder, requestManager: managerStub);
+                    let helper = SpendingSavingHelper(spendingDict: spendingDict, dateOrder: dateOrder, requestManager: managerStub, loginManager: loginManager);
                     
                     waitUntil(timeout: 30) { done in
-                        helper?.startSaving({ (results : [[Bool]]) -> Void in
+                        let status = helper?.startSaving({ (results : [[Bool]]) -> Void in
                             expect(results).toNot(beNil());
                             expect(results).to(haveCount(3));
                             expect(results[0]).to(equal([true]));
@@ -79,6 +110,7 @@ class SpendingSavingHelperTests: QuickSpec {
                             expect(results[2]).to(equal([true, false]));
                             done();
                         })
+                        expect(status).to(beTrue());
                     }
                 }
             }

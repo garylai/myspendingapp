@@ -15,7 +15,7 @@ enum APIError {
     case SystemReturned(ErrorType?)
 }
 
-protocol EasyRequest {
+protocol RequestMaker {
     func makeRequest(
     method: String,
     _ relativePath: String,
@@ -26,7 +26,13 @@ protocol EasyRequest {
     completedCallback: (() -> Void)?);
 }
 
-class Util : EasyRequest{
+protocol LogInInfoManager {
+    func setLoginInfo(obj : LogInInfo) -> Bool;
+    func getLoginInfo() -> LogInInfo?;
+    func deleteLoginInfo() -> Bool;
+}
+
+class Util : RequestMaker, LogInInfoManager{
     private static var _instance : Util!;
     private static let KEY_CHAIN_KEY = "log-in-info"
     var spendingTypesDict : [Int : SpendingType]!;
