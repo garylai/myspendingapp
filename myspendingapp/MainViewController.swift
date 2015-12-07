@@ -13,6 +13,7 @@ enum AppSection {
     case None
     case LogIn
     case AddSpending
+    case ListSpendings
 }
 
 class MainViewController: UIViewController {
@@ -50,6 +51,9 @@ class MainViewController: UIViewController {
         case .AddSpending:
             let addSpendingStoryBoard = UIStoryboard.init(name: "AddSpending", bundle: nil);
             targetViewController = addSpendingStoryBoard.instantiateInitialViewController();
+        case .ListSpendings:
+            let listSpeindingsStoryBoard = UIStoryboard.init(name: "SpendingList", bundle: nil);
+            targetViewController = listSpeindingsStoryBoard.instantiateInitialViewController();
         }
         
         if let c = targetViewController {
@@ -88,7 +92,7 @@ class MainViewController: UIViewController {
             print("has loging_info id: \(loginInfo.id)");
             print("             token: \(loginInfo.token)");
             //            Util.deleteLoginInfo();
-            changeSection(to: .AddSpending);
+            changeSection(to: .ListSpendings);
         } else {
             changeSection(to: .LogIn);
         }

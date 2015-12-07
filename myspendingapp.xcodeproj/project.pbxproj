@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050EAAF0E7381D078753D778 /* Pods_myspendingappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F47CD25F8463FCE09C710C /* Pods_myspendingappTests.framework */; };
-		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; };
+		6ABCA8F5BA6E02E56CFC2779 /* Pods_myspendingapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF949FE441BE1191CE74C06 /* Pods_myspendingapp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FC047E751BFC766F0012BC09 /* SpendingSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC047E741BFC766F0012BC09 /* SpendingSavingHelper.swift */; };
 		FC112D7B1BCE105700E0BDE3 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */; };
 		FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC112D7E1BCE2F8600E0BDE3 /* AddSpending.storyboard */; };
@@ -26,6 +26,11 @@
 		FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49419D1BB3D6A400C6349D /* MSAButton.swift */; };
 		FC743E311BC166AE008BF21F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC743E301BC166AD008BF21F /* Util.swift */; };
 		FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC78EB8B1BC0C19F005E39FC /* Environment.swift */; };
+		FC7CA8F91C1570F300049AF3 /* MonthSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8F81C1570F300049AF3 /* MonthSpending.swift */; };
+		FC7DECD31C153BC1002614E0 /* SpendingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7DECD21C153BC1002614E0 /* SpendingList.storyboard */; };
+		FC7DED231C1543B7002614E0 /* YearSpendingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DED221C1543B7002614E0 /* YearSpendingsTableViewController.swift */; };
+		FC7DED251C15470F002614E0 /* YearSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DED241C15470F002614E0 /* YearSpending.swift */; };
+		FC7DED291C156070002614E0 /* MonthSpendingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DED281C156070002614E0 /* MonthSpendingsTableViewController.swift */; };
 		FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9D5CBB1BC37898004BEE27 /* Main.storyboard */; };
 		FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */; };
 		FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */; };
@@ -80,6 +85,11 @@
 		FC49419D1BB3D6A400C6349D /* MSAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAButton.swift; sourceTree = "<group>"; };
 		FC743E301BC166AD008BF21F /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		FC78EB8B1BC0C19F005E39FC /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		FC7CA8F81C1570F300049AF3 /* MonthSpending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSpending.swift; sourceTree = "<group>"; };
+		FC7DECD21C153BC1002614E0 /* SpendingList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpendingList.storyboard; sourceTree = "<group>"; };
+		FC7DED221C1543B7002614E0 /* YearSpendingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearSpendingsTableViewController.swift; sourceTree = "<group>"; };
+		FC7DED241C15470F002614E0 /* YearSpending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearSpending.swift; sourceTree = "<group>"; };
+		FC7DED281C156070002614E0 /* MonthSpendingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSpendingsTableViewController.swift; sourceTree = "<group>"; };
 		FC9D5CBB1BC37898004BEE27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
@@ -160,6 +170,7 @@
 				FC112D8C1BCE516100E0BDE3 /* TableViewTextView.swift */,
 				FC112D8E1BCE53C000E0BDE3 /* TableViewButtonView.xib */,
 				FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */,
+				FC7DECD21C153BC1002614E0 /* SpendingList.storyboard */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -171,6 +182,8 @@
 				FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */,
 				FC112D821BCE357F00E0BDE3 /* AddSpendingListViewController.swift */,
 				FC14B7A41BD4E8B60076DD29 /* AddSpendingFormController.swift */,
+				FC7DED221C1543B7002614E0 /* YearSpendingsTableViewController.swift */,
+				FC7DED281C156070002614E0 /* MonthSpendingsTableViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -199,6 +212,8 @@
 				FC112D7A1BCE105700E0BDE3 /* ModelBase.swift */,
 				FC112D841BCE485D00E0BDE3 /* SpendingType.swift */,
 				FC112D861BCE48AE00E0BDE3 /* Spending.swift */,
+				FC7DED241C15470F002614E0 /* YearSpending.swift */,
+				FC7CA8F81C1570F300049AF3 /* MonthSpending.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -377,6 +392,7 @@
 				FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */,
 				FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */,
 				FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */,
+				FC7DECD31C153BC1002614E0 /* SpendingList.storyboard in Resources */,
 				FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */,
 				FC14B7991BD4C3A40076DD29 /* spending_types.json in Resources */,
 			);
@@ -505,7 +521,11 @@
 				FC78EB8C1BC0C19F005E39FC /* Environment.swift in Sources */,
 				FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */,
 				FC112D851BCE485D00E0BDE3 /* SpendingType.swift in Sources */,
+				FC7DED291C156070002614E0 /* MonthSpendingsTableViewController.swift in Sources */,
+				FC7DED231C1543B7002614E0 /* YearSpendingsTableViewController.swift in Sources */,
+				FC7CA8F91C1570F300049AF3 /* MonthSpending.swift in Sources */,
 				FC49419E1BB3D6A400C6349D /* MSAButton.swift in Sources */,
+				FC7DED251C15470F002614E0 /* YearSpending.swift in Sources */,
 				FC112D831BCE357F00E0BDE3 /* AddSpendingListViewController.swift in Sources */,
 				FC112D8D1BCE516100E0BDE3 /* TableViewTextView.swift in Sources */,
 				FC743E311BC166AE008BF21F /* Util.swift in Sources */,
