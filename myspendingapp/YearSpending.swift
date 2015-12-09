@@ -11,7 +11,7 @@ import ObjectMapper
 
 class YearSpending : ModelBase {
     var total: Float?;
-    var yearOfSpending: Int?;
+    var spendingTypeId: Int?;
     
     override init() {
         super.init();
@@ -25,13 +25,13 @@ class YearSpending : ModelBase {
         super.doMap(map);
         
         total <- map["total"];
-        yearOfSpending <- map["year_of_spending"];
+        spendingTypeId <- map["spending_type_id"];
     }
     
     override func validateMapping() -> Bool {
         return super.validateMapping() &&
             total != nil &&
-            yearOfSpending != nil;
+            spendingTypeId != nil;
     }
 
 }

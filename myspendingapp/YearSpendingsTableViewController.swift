@@ -10,7 +10,9 @@ import UIKit
 import ObjectMapper
 
 class YearSpendingsTableViewController: UITableViewController {
-    private var yearSpendingList : [YearSpending]?;
+    private var yearSpendingList : [String: [YearSpending]]?;
+    private var sortedYears : [Int]?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,8 +23,11 @@ class YearSpendingsTableViewController: UITableViewController {
             successCallback: {
                 (json : AnyObject?) -> Void in
                 print(json);
-                if let spendingList = Mapper<YearSpending>().mapArray(json) {
+                if let spendingList = Mapper<YearSpending>().mapDictionaryOfArrays(json) {
                     self.yearSpendingList = spendingList;
+                    self.sortedYears = Array(spendingList.keys).map({ (key) -> Int in
+                        return Int(key)!;
+                    }).sort().reverse();
                     self.tableView.reloadData();
                 }
             },
@@ -47,8 +52,8 @@ class YearSpendingsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selected-year" {
             if let targetController = segue.destinationViewController as? MonthSpendingsTableViewController {
-                let selectedYearSpending = yearSpendingList![tableView.indexPathForSelectedRow!.row];
-                targetController.targetYear = selectedYearSpending.yearOfSpending!;
+                let selectedYearSpending = sortedYears![tableView.indexPathForSelectedRow!.section];
+                targetController.targetYear = selectedYearSpending;
             }
         }
     }
@@ -62,24 +67,63 @@ class YearSpendingsTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1;
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         guard yearSpendingList != nil else {
             return 0;
         }
         return yearSpendingList!.count;
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        let key = String(sortedYears![section]);
+        guard yearSpendingList![key] != nil else {
+            return 0;
+        }
+        
+        let count = Float(yearSpendingList![key]!.count);
+        return Int(ceil(count/2.0));
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let key = String(sortedYears![section]);
+        return key;
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        let key = String(sortedYears![section]);
+        let spendings = yearSpendingList![key]!;
+        var total = Float(0);
+        for s in spendings {
+            total = total + s.total!;
+        }
+        return "total: \(total)";
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("year-spending-cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("year-spending-cell", forIndexPath: indexPath) as! TypeSpendingCell;
         
-        let target = yearSpendingList![indexPath.row];
-        cell.textLabel?.text = "\(target.yearOfSpending!)";
-        cell.detailTextLabel?.text = "\(target.total!)";
+        let key = String(sortedYears![indexPath.section]);
+        let spendings = yearSpendingList![key]!;
+        let spendingLeft = spendings[2 * indexPath.row];
+        let spendingRight : YearSpending? = {
+            if (2 * indexPath.row + 1) < spendings.count {
+               return spendings[2 * indexPath.row + 1];
+            }
+            return nil;
+        }();
+        
+        let spendingTypes = Util.instance.spendingTypesDict;
+        let leftName = spendingTypes[spendingLeft.spendingTypeId!]?.name;
+        cell.leftTypeLabel.text = "\(leftName!)";
+        cell.leftValue.text = "\(spendingLeft.total!)";
+        if spendingRight != nil {
+            let rightName = spendingTypes[spendingRight!.spendingTypeId!]?.name;
+            cell.rightTypeLabel.text = "\(rightName!)";
+            cell.rightValue.text = "\(spendingRight!.total!)";
+            cell.rightView.hidden = false;
+        } else {
+            cell.rightView.hidden = true;
+        }
 
         return cell
     }
