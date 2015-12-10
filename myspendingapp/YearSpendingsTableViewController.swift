@@ -13,16 +13,13 @@ class YearSpendingsTableViewController: UITableViewController {
     private var yearSpendingList : [String: [YearSpending]]?;
     private var sortedYears : [Int]?;
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func refreshData() {
         Util.instance.mainController.showActivityIndicator = true;
         let token = (Util.instance.getLoginInfo()?.token)!;
         Util.instance.makeRequest("GET", "spendings",
             customHeaders: ["Authorization": "Token token=\(token)"],
             successCallback: {
                 (json : AnyObject?) -> Void in
-                print(json);
                 if let spendingList = Mapper<YearSpending>().mapDictionaryOfArrays(json) {
                     self.yearSpendingList = spendingList;
                     self.sortedYears = Array(spendingList.keys).map({ (key) -> Int in
@@ -33,15 +30,22 @@ class YearSpendingsTableViewController: UITableViewController {
             },
             failedCallback: {
                 (apiError: APIError?, reason: String?) -> Void in
-                print(apiError);
-                print(reason);
                 let alert = UIAlertView(title: "Get Spending Failed", message: reason, delegate: nil, cancelButtonTitle: "OK");
                 alert.show();
             },
             completedCallback: {
                 () -> Void in
                 Util.instance.mainController.showActivityIndicator = false;
-            });
+                self.refreshControl?.endRefreshing();
+        });
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        
+        refreshControl = UIRefreshControl();
+        refreshControl?.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged);
+        
+        refreshData();
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -101,6 +105,7 @@ class YearSpendingsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("year-spending-cell", forIndexPath: indexPath) as! TypeSpendingCell;
+        cell.selectionStyle = .None;
         
         let key = String(sortedYears![indexPath.section]);
         let spendings = yearSpendingList![key]!;
@@ -128,6 +133,9 @@ class YearSpendingsTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60;
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
