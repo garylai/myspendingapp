@@ -17,21 +17,20 @@ enum AppSection {
 }
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var activityIndicatorContainerView: UIView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
     private var _currentSection : AppSection;
     private var _currentViewController : UIViewController?;
     
+    private let _activityIndicatorViewController : ActivityIndicatorViewController!;
+    private let _activityViewWindow : UIWindow!;
+    
     var showActivityIndicator : Bool {
         get {
-            return !activityIndicatorContainerView.hidden;
+            return !_activityViewWindow.hidden;
         }
         set (toShow){
-            activityIndicatorContainerView.hidden = !toShow;
+            _activityViewWindow.hidden = !toShow;
             if(toShow){
-                self.view.bringSubviewToFront(activityIndicatorContainerView);
-                activityIndicatorView.startAnimating();
+                _activityIndicatorViewController.activityIndicator.startAnimating();
             } 
         }
     }
@@ -78,11 +77,23 @@ class MainViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         _currentSection = .None;
+        
+        _activityIndicatorViewController = ActivityIndicatorViewController();
+        _activityIndicatorViewController.view.frame = UIScreen.mainScreen().bounds;
+        
+        _activityViewWindow = UIWindow();
+        _activityViewWindow.windowLevel = UIWindowLevelStatusBar + 1;
+        _activityViewWindow.frame = UIScreen.mainScreen().bounds;
+        _activityViewWindow.backgroundColor = UIColor.clearColor();
+        _activityViewWindow.addSubview(_activityIndicatorViewController.view);
+        _activityViewWindow.rootViewController = _activityIndicatorViewController;
         super.init(coder: aDecoder);
+        
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        
         guard Util.instance.loadSpendingType() else {
             exit(0);
         }

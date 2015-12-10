@@ -34,6 +34,8 @@
 		FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9D5CBB1BC37898004BEE27 /* Main.storyboard */; };
 		FC9D5CBE1BC37978004BEE27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */; };
 		FCB3D9D71C18271F0063556A /* TypeSpendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB3D9D61C18271F0063556A /* TypeSpendingCell.swift */; };
+		FCB3DA011C195CD60063556A /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB3D9FF1C195CD60063556A /* ActivityIndicatorViewController.swift */; };
+		FCB3DA021C195CD60063556A /* ActivityIndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB3DA001C195CD60063556A /* ActivityIndicatorViewController.xib */; };
 		FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */; };
 		FCBE27FB1BC637D300D30EBE /* LogInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */; };
 		FCE8DE2B1BABC6F7008A716B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8DE2A1BABC6F7008A716B /* AppDelegate.swift */; };
@@ -94,6 +96,8 @@
 		FC9D5CBB1BC37898004BEE27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FC9D5CBD1BC37978004BEE27 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FCB3D9D61C18271F0063556A /* TypeSpendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSpendingCell.swift; sourceTree = "<group>"; };
+		FCB3D9FF1C195CD60063556A /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
+		FCB3DA001C195CD60063556A /* ActivityIndicatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorViewController.xib; sourceTree = "<group>"; };
 		FCBE27F81BC61C3600D30EBE /* KeyChainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
 		FCBE27FA1BC637D300D30EBE /* LogInInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInInfo.swift; sourceTree = "<group>"; };
 		FCE8DE271BABC6F7008A716B /* myspendingapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myspendingapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +178,7 @@
 				FC112D901BCE53F700E0BDE3 /* TableViewButtonView.swift */,
 				FC7DECD21C153BC1002614E0 /* SpendingList.storyboard */,
 				FCB3D9D61C18271F0063556A /* TypeSpendingCell.swift */,
+				FCB3DA001C195CD60063556A /* ActivityIndicatorViewController.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				FC14B7A41BD4E8B60076DD29 /* AddSpendingFormController.swift */,
 				FC7DED221C1543B7002614E0 /* YearSpendingsTableViewController.swift */,
 				FC7DED281C156070002614E0 /* MonthSpendingsTableViewController.swift */,
+				FCB3D9FF1C195CD60063556A /* ActivityIndicatorViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				FCE8DE351BABC6F7008A716B /* Assets.xcassets in Resources */,
 				FCE8DE301BABC6F7008A716B /* Login.storyboard in Resources */,
 				FC112D8B1BCE50BB00E0BDE3 /* TableViewTextView.xib in Resources */,
+				FCB3DA021C195CD60063556A /* ActivityIndicatorViewController.xib in Resources */,
 				FC112D7F1BCE2F8600E0BDE3 /* AddSpending.storyboard in Resources */,
 				FC7DECD31C153BC1002614E0 /* SpendingList.storyboard in Resources */,
 				FC9D5CBC1BC37898004BEE27 /* Main.storyboard in Resources */,
@@ -517,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE8DE2D1BABC6F7008A716B /* LoginViewController.swift in Sources */,
+				FCB3DA011C195CD60063556A /* ActivityIndicatorViewController.swift in Sources */,
 				FC14B7A61BD4E8B60076DD29 /* AddSpendingFormController.swift in Sources */,
 				FCBE27F91BC61C3600D30EBE /* KeyChainWrapper.swift in Sources */,
 				FC047E751BFC766F0012BC09 /* SpendingSavingHelper.swift in Sources */,

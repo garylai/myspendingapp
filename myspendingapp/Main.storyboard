@@ -16,33 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="9c6-XC-NqD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGF-mf-CpM">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aBT-kk-xah">
-                                        <rect key="frame" x="282" y="272" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="aBT-kk-xah" firstAttribute="centerX" secondItem="XGF-mf-CpM" secondAttribute="centerX" id="lxO-Ko-IuU"/>
-                                    <constraint firstItem="aBT-kk-xah" firstAttribute="centerY" secondItem="XGF-mf-CpM" secondAttribute="centerY" id="qSv-1i-RrE"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XGF-mf-CpM" firstAttribute="leading" secondItem="9c6-XC-NqD" secondAttribute="leading" id="0VC-SE-eGX"/>
-                            <constraint firstItem="gOa-qS-1GS" firstAttribute="top" secondItem="XGF-mf-CpM" secondAttribute="bottom" id="ATj-PS-dyS"/>
-                            <constraint firstItem="XGF-mf-CpM" firstAttribute="top" secondItem="gaN-EQ-sJo" secondAttribute="bottom" id="IQM-SE-lrl"/>
-                            <constraint firstAttribute="trailing" secondItem="XGF-mf-CpM" secondAttribute="trailing" id="dRO-fC-hVE"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="activityIndicatorContainerView" destination="XGF-mf-CpM" id="q4I-LY-Zo9"/>
-                        <outlet property="activityIndicatorView" destination="aBT-kk-xah" id="LmB-qd-LFb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1U-KS-LtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
