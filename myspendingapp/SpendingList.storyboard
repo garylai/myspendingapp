@@ -126,12 +126,80 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UAq-uT-YYh"/>
                                 </constraints>
-                                <items/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wT6-Kq-pyg"/>
+                                    <barButtonItem enabled="NO" title="A" style="plain" id="XmV-dm-yEu"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lGV-51-ve1"/>
+                                    <barButtonItem enabled="NO" title="A" style="plain" id="JM4-Mm-bXJ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9Zm-pw-GAE"/>
+                                    <barButtonItem enabled="NO" title="A" style="plain" id="zEX-os-sln"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="y6U-lg-6Ef"/>
+                                </items>
                                 <color key="barTintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="3W0-s8-JtD" id="rZb-Mm-Ig2"/>
                                 </connections>
                             </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-vM-uyx" userLabel="S1">
+                                <rect key="frame" x="248" y="102" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-jk-NDj" userLabel="I1">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="239-qJ-1ms" userLabel="S2">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ts-4i-joa" userLabel="I2">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-Ey-wIM" userLabel="S3">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZV-yA-z4z" userLabel="I3">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V3U-Sw-M5t" userLabel="S4">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1D-Cf-B4m" userLabel="I4">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rji-In-7Ln" userLabel="S5">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8X-Vy-Uy6" userLabel="I5">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMn-yi-WSu" userLabel="S6">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNu-Tb-mpB" userLabel="I6">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lya-qP-Hik" userLabel="S7">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gl7-xS-bXt" userLabel="I7">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpf-IZ-3z6" userLabel="S8">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -142,6 +210,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="S1" destination="0ho-vM-uyx" id="x1j-ID-0RO"/>
+                        <outlet property="i1" destination="Me0-jk-NDj" id="P2P-aO-JV3"/>
+                        <outlet property="i2" destination="0Ts-4i-joa" id="1CR-VX-dpR"/>
+                        <outlet property="i3" destination="vZV-yA-z4z" id="hPn-XY-g9k"/>
+                        <outlet property="s1" destination="0ho-vM-uyx" id="6U0-L8-H21"/>
+                        <outlet property="s2" destination="239-qJ-1ms" id="A0q-Ns-c4z"/>
+                        <outlet property="s3" destination="bQQ-Ey-wIM" id="8Dj-Mm-4Ly"/>
+                        <outlet property="s4" destination="V3U-Sw-M5t" id="Mvv-nV-QQF"/>
+                        <outlet property="toolbar" destination="bNv-Rl-WR9" id="Ix7-au-Dqd"/>
                         <outlet property="toolbarHeightConstraint" destination="UAq-uT-YYh" id="YPd-Kn-mXR"/>
                     </connections>
                 </viewController>
